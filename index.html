@@ -53,6 +53,7 @@
       gap: 0.6rem;
       text-decoration: none;
       color: var(--navy);
+      cursor: pointer;
     }
     .logo-icon {
       width: 34px;
@@ -78,6 +79,7 @@
       color: var(--text);
       font-size: 0.9rem;
       font-weight: 500;
+      cursor: pointer;
     }
     .nav-links a:hover { color: var(--fjord); }
 
@@ -456,6 +458,220 @@
       cursor: pointer;
     }
 
+    /* Modal */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-card {
+      background: var(--surface);
+      border-radius: 16px;
+      max-width: 650px;
+      width: 100%;
+      max-height: 86vh;
+      overflow-y: auto;
+      padding: 1.65rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.22);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--bg);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    .modal-card h2 { color: var(--navy); margin-bottom: 0.4rem; font-size: 1.3rem; padding-right: 2rem; }
+    .modal-sub { color: var(--muted); font-size: 0.88rem; margin-bottom: 1rem; }
+
+    /* Interactive Point Cards inside Modal & Full Page */
+    .point-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+    .point-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      transition: border-color 0.15s;
+    }
+    .point-item:hover { border-color: #cbd5e1; }
+    .point-title {
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    .point-desc {
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 0.55rem;
+    }
+    .point-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    .jump-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: var(--surface);
+      color: var(--fjord);
+      border: 1px solid #cbd5e1;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .jump-chip:hover {
+      background: var(--fjord);
+      color: #ffffff;
+      border-color: var(--fjord);
+    }
+    .jump-chip.internal {
+      color: var(--navy);
+      background: var(--card-blue);
+      border-color: #b8d4e8;
+    }
+    .jump-chip.internal:hover {
+      background: var(--navy);
+      color: #ffffff;
+    }
+
+    .modal-footer-bar {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .fullpage-cta {
+      background: var(--navy);
+      color: white;
+      border: none;
+      padding: 0.65rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .fullpage-cta:hover { background: var(--navy-light); }
+
+    /* Dedicated Full Guide Page View */
+    #pageView {
+      display: none;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+    #pageView.active { display: block; }
+    .back-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .back-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--navy);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .back-btn:hover { background: var(--card-blue); }
+    .article-shell {
+      background: var(--surface);
+      border-radius: 18px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+    }
+    .article-badge {
+      display: inline-block;
+      background: var(--card-blue);
+      color: var(--navy);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+    .article-shell h1 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .article-lead {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .article-section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 1.5rem 0 0.75rem;
+    }
+    .related-nav {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .related-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+    }
+
+    .check-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.7rem 0.8rem;
+      background: var(--bg);
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .check-row input { margin-top: 0.25rem; accent-color: var(--navy); width: 17px; height: 17px; }
+
     /* Footer */
     footer {
       background: var(--navy);
@@ -473,56 +689,7 @@
       gap: 1rem;
     }
     .footer-links { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .footer-links a { color: rgba(255,255,255,0.8); text-decoration: none; }
-
-    /* Modal */
-    .modal-backdrop {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.55);
-      z-index: 999;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-    .modal-backdrop.open { display: flex; }
-    .modal-card {
-      background: var(--surface);
-      border-radius: 16px;
-      max-width: 620px;
-      width: 100%;
-      max-height: 85vh;
-      overflow-y: auto;
-      padding: 1.6rem;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      position: relative;
-    }
-    .modal-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: var(--bg);
-      border: none;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      font-size: 1.1rem;
-      cursor: pointer;
-    }
-    .modal-card h2 { color: var(--navy); margin-bottom: 0.75rem; font-size: 1.3rem; }
-    .modal-card ul { padding-left: 1.2rem; margin-top: 0.6rem; }
-    .modal-card li { margin-bottom: 0.6rem; font-size: 0.93rem; }
-    .check-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      padding: 0.6rem 0;
-      border-bottom: 1px solid var(--bg);
-      cursor: pointer;
-      font-size: 0.92rem;
-    }
-    .check-row input { margin-top: 0.25rem; accent-color: var(--navy); width: 17px; height: 17px; }
+    .footer-links a { color: rgba(255,255,255,0.8); text-decoration: none; cursor: pointer; }
 
     @media (max-width: 980px) {
       .qa-layout { grid-template-columns: 1fr; }
@@ -535,6 +702,7 @@
       .category-grid { grid-template-columns: repeat(2, 1fr); }
       .situation-grid { grid-template-columns: repeat(2, 1fr); }
       .step-arrow { display: none; }
+      .article-shell { padding: 1.35rem; }
     }
   </style>
 </head>
@@ -542,19 +710,19 @@
 
   <header class="navbar">
     <div class="nav-inner">
-      <a href="#" class="logo">
+      <div class="logo" onclick="goHome()">
         <div class="logo-icon">⛰️</div>
         <div class="logo-text">
           <strong>Bergen Hub</strong>
           <span>Live. Study. Belong.</span>
         </div>
-      </a>
+      </div>
 
       <ul class="nav-links">
-        <li><a href="#guides" data-en="Guides" data-jp="ガイド一覧">Guides</a></li>
-        <li><a href="#timeline" data-en="Timeline" data-jp="タイムライン">Timeline</a></li>
-        <li><a href="#resources" data-en="Resources" data-jp="公式リンク">Resources</a></li>
-        <li><a href="#community" data-en="Community" data-jp="コミュニティ">Community</a></li>
+        <li><a onclick="goHome('guides')" data-en="Guides" data-jp="ガイド一覧">Guides</a></li>
+        <li><a onclick="goHome('timeline')" data-en="Timeline" data-jp="タイムライン">Timeline</a></li>
+        <li><a onclick="goHome('resources')" data-en="Resources" data-jp="公式リンク">Resources</a></li>
+        <li><a onclick="openFullPage('checklist')" data-en="Checklist" data-jp="チェックリスト">Checklist</a></li>
       </ul>
 
       <div class="nav-actions">
@@ -563,229 +731,242 @@
           <button class="lang-btn" onclick="setLang('jp', this)">日本語</button>
         </div>
         <button class="ask-btn" onclick="openTopic('checklist')">
-          <span>💬</span> <span data-en="Arrival Checklist" data-jp="到着チェックリスト">Arrival Checklist</span>
+          <span>✅</span> <span data-en="Arrival Checklist" data-jp="到着チェックリスト">Arrival Checklist</span>
         </button>
       </div>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="welcome-sticker">Welcome<br>to Bergen!</div>
-      <h1 data-en="Your exchange life in Bergen, made easier." data-jp="ベルゲンでの交換留学生活を、もっとシンプルに。">Your exchange life in Bergen, made easier.</h1>
-      <p data-en="One place for everything you need — from arrival to departure." data-jp="到着初日の移動から銀行・ゴミ分別・退去手続きまで、留学生の「困った」を1か所で解決。">One place for everything you need — from arrival to departure.</p>
+  <!-- HOME VIEW -->
+  <div id="homeView">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="welcome-sticker">Welcome<br>to Bergen!</div>
+        <h1 data-en="Your exchange life in Bergen, made easier." data-jp="ベルゲンでの交換留学生活を、もっとシンプルに。">Your exchange life in Bergen, made easier.</h1>
+        <p data-en="One place for everything you need — from arrival to departure." data-jp="到着初日の移動から銀行・ゴミ分別・退去手続きまで、留学生の「困った」を1か所で解決。">One place for everything you need — from arrival to departure.</p>
 
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder='Search for anything (e.g. "Vipps", "Sammen rent", "waste oil")' onkeyup="handleSearch(event)">
-        <button class="search-submit" onclick="runSearch()">🔍</button>
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder='Search for anything (e.g. "Vipps", "Sammen rent", "waste oil")' onkeyup="handleSearch(event)">
+          <button class="search-submit" onclick="runSearch()">🔍</button>
+        </div>
       </div>
+    </section>
+
+    <main class="main">
+
+      <section class="journey-bar" id="timeline">
+        <div class="journey-intro">
+          <strong data-en="🧭 Not sure where to start?" data-jp="🧭 何から始めればいい？">🧭 Not sure where to start?</strong>
+          <span data-en="Follow your journey, find what you need:" data-jp="時期ごとの必須タスクをチェック：">Follow your journey, find what you need:</span>
+        </div>
+
+        <div class="journey-steps">
+          <div class="step-item" onclick="openTopic('before')">
+            <div class="step-circle">✈️</div>
+            <strong data-en="Before You Arrive" data-jp="渡航前">Before You Arrive</strong>
+            <span data-en="Get ready for Bergen" data-jp="アプリ・決済準備">Get ready for Bergen</span>
+          </div>
+          <div class="step-arrow">→</div>
+
+          <div class="step-item" onclick="openTopic('week1')">
+            <div class="step-circle">📅</div>
+            <strong data-en="Your First Week" data-jp="到着1週目">Your First Week</strong>
+            <span data-en="Settle in smoothly" data-jp="鍵受け取り・学生証">Settle in smoothly</span>
+          </div>
+          <div class="step-arrow">→</div>
+
+          <div class="step-item" onclick="openTopic('month1')">
+            <div class="step-circle">🏠</div>
+            <strong data-en="After 1 Month" data-jp="1ヶ月後">After 1 Month</strong>
+            <span data-en="Build your routine" data-jp="警察登録・生活習慣">Build your routine</span>
+          </div>
+          <div class="step-arrow">→</div>
+
+          <div class="step-item" onclick="openTopic('studies')">
+            <div class="step-circle">🎓</div>
+            <strong data-en="During Your Studies" data-jp="在学中・試験">During Your Studies</strong>
+            <span data-en="Make the most of it" data-jp="試験・退去掃除">Make the most of it</span>
+          </div>
+        </div>
+
+        <button class="outline-btn" onclick="openFullPage('checklist')" data-en="Full Checklist Page →" data-jp="チェックリストページへ →">Full Checklist Page →</button>
+      </section>
+
+      <section class="qa-layout" id="guides">
+        <div>
+          <h2 class="section-title" data-en="▦ Find answers to your questions" data-jp="▦ カテゴリーから探す">▦ Find answers to your questions</h2>
+          <div class="category-grid">
+            <div class="cat-card" onclick="openTopic('housing')">
+              <div class="cat-icon">🏠</div>
+              <div class="cat-title" data-en="Housing & Accommodation" data-jp="寮・住居 (Sammen)">Housing & Accommodation</div>
+              <div class="cat-arrow">→</div>
+            </div>
+
+            <div class="cat-card green" onclick="openTopic('waste')">
+              <div class="cat-icon">♻️</div>
+              <div class="cat-title" data-en="Waste Sorting & Recycling" data-jp="ゴミ分別・リサイクル">Waste Sorting & Recycling</div>
+              <div class="cat-arrow">→</div>
+            </div>
+
+            <div class="cat-card" onclick="openTopic('transport')">
+              <div class="cat-icon">🚋</div>
+              <div class="cat-title" data-en="Transportation (Skyss)" data-jp="交通・定期券 (Skyss)">Transportation (Skyss)</div>
+              <div class="cat-arrow">→</div>
+            </div>
+
+            <div class="cat-card" onclick="openTopic('university')">
+              <div class="cat-icon">🎓</div>
+              <div class="cat-title" data-en="University Life & Exams" data-jp="大学生活・試験 (UiB)">University Life & Exams</div>
+              <div class="cat-arrow">→</div>
+            </div>
+
+            <div class="cat-card purple" onclick="openTopic('studentcard')">
+              <div class="cat-icon">🪪</div>
+              <div class="cat-title" data-en="Student Card & Discounts" data-jp="学生証・学割アプリ">Student Card & Discounts</div>
+              <div class="cat-arrow">→</div>
+            </div>
+
+            <div class="cat-card pink" onclick="openTopic('healthcare')">
+              <div class="cat-icon">🏥</div>
+              <div class="cat-title" data-en="Healthcare & Emergencies" data-jp="病院・救急・健康">Healthcare & Emergencies</div>
+              <div class="cat-arrow">→</div>
+            </div>
+
+            <div class="cat-card" onclick="openTopic('shopping')">
+              <div class="cat-icon">🛒</div>
+              <div class="cat-title" data-en="Shopping & Rain Gear" data-jp="スーパー・雨具対策">Shopping & Rain Gear</div>
+              <div class="cat-arrow">→</div>
+            </div>
+
+            <div class="cat-card" onclick="openTopic('banking')">
+              <div class="cat-icon">💳</div>
+              <div class="cat-title" data-en="No Vipps & Money Hacks" data-jp="Vippsなし決済・銀行">No Vipps & Money Hacks</div>
+              <div class="cat-arrow">→</div>
+            </div>
+
+            <div class="cat-card" onclick="openTopic('social')">
+              <div class="cat-icon">👥</div>
+              <div class="cat-title" data-en="Social Life & Events" data-jp="学生イベント・交流">Social Life & Events</div>
+              <div class="cat-arrow">→</div>
+            </div>
+
+            <div class="cat-card purple" onclick="openTopic('norwegian')">
+              <div class="cat-icon">💬</div>
+              <div class="cat-title" data-en="Norwegian Language" data-jp="ノルウェー語学習">Norwegian Language</div>
+              <div class="cat-arrow">→</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="popular-box">
+          <h3 data-en="⭐ Popular Questions" data-jp="⭐ よくある質問">⭐ Popular Questions</h3>
+          <ul class="pq-list">
+            <li class="pq-item" onclick="openTopic('banking')">
+              <span>How do I pay without Vipps?</span><span>→</span>
+            </li>
+            <li class="pq-item" onclick="openTopic('housing')">
+              <span>How do I pay my Sammen rent?</span><span>→</span>
+            </li>
+            <li class="pq-item" onclick="openTopic('waste')">
+              <span>Where can I throw away cooking oil?</span><span>→</span>
+            </li>
+            <li class="pq-item" onclick="openTopic('transport')">
+              <span>How do I get a student ticket on Skyss?</span><span>→</span>
+            </li>
+            <li class="pq-item" onclick="openTopic('housing')">
+              <span>What is Sammen Utvask inspection?</span><span>→</span>
+            </li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="bottom-grid" id="resources">
+        <div class="panel">
+          <h3 data-en="🔗 Essential Links" data-jp="🔗 公式リンク集">🔗 Essential Links</h3>
+          <p class="panel-sub" data-en="Official websites & key services" data-jp="主要サービスへのショートカット">Official websites & key services</p>
+
+          <a class="ext-link" href="https://sammen.no/en" target="_blank" rel="noopener">
+            <span class="ext-left"><span class="ext-badge">🏠</span> Sammen – Housing & Rent</span><span>↗</span>
+          </a>
+          <a class="ext-link" href="https://bir.no" target="_blank" rel="noopener">
+            <span class="ext-left"><span class="ext-badge">♻️</span> BIR – Waste Sorting Guide</span><span>↗</span>
+          </a>
+          <a class="ext-link" href="https://www.skyss.no/en/" target="_blank" rel="noopener">
+            <span class="ext-left"><span class="ext-badge">🚋</span> Skyss – Public Transport</span><span>↗</span>
+          </a>
+          <a class="ext-link" href="https://mitt.uib.no" target="_blank" rel="noopener">
+            <span class="ext-left"><span class="ext-badge">🎓</span> Mitt UiB – Course Portal</span><span>↗</span>
+          </a>
+          <a class="ext-link" href="https://www.udi.no/en/" target="_blank" rel="noopener">
+            <span class="ext-left"><span class="ext-badge">🛂</span> UDI – Police Registration</span><span>↗</span>
+          </a>
+        </div>
+
+        <div class="panel">
+          <h3 data-en="👤 Your Situation" data-jp="👤 今の状況から探す">👤 Your Situation</h3>
+          <p class="panel-sub" data-en="Click a card to jump to its dedicated guide" data-jp="状況別の専用ページへ移動">Click a card to jump to its dedicated guide</p>
+
+          <div class="situation-grid">
+            <div class="sit-card" onclick="openFullPage('before')">
+              <div class="sit-img" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=500&q=80');"></div>
+              <div class="sit-body"><span>Prepare before arrival</span><span>→</span></div>
+            </div>
+
+            <div class="sit-card" onclick="openFullPage('week1')">
+              <div class="sit-img" style="background-image: url('https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?auto=format&fit=crop&w=500&q=80');"></div>
+              <div class="sit-body"><span>Settle in during the first week</span><span>→</span></div>
+            </div>
+
+            <div class="sit-card" onclick="openFullPage('month1')">
+              <div class="sit-img" style="background-image: url('https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?auto=format&fit=crop&w=500&q=80');"></div>
+              <div class="sit-body"><span>Get settled after one month</span><span>→</span></div>
+            </div>
+
+            <div class="sit-card" onclick="openFullPage('studies')">
+              <div class="sit-img" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=500&q=80');"></div>
+              <div class="sit-body"><span>Enjoy student life in Bergen</span><span>→</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel help-panel" id="community">
+          <div>
+            <h3 data-en="💡 Need more help?" data-jp="💡 まだ解決しない時は？">💡 Need more help?</h3>
+            <p class="panel-sub" data-en="Share this guide or open the interactive arrival checklist!" data-jp="留学生仲間と情報をシェアしよう！">Share this guide or open the interactive arrival checklist!</p>
+          </div>
+
+          <div>
+            <button class="primary-btn" onclick="copyShareLink()" id="shareBtn">Share This Guide Link →</button>
+            <button class="secondary-btn" onclick="openFullPage('checklist')">✅ Open Checklist Page</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- DEDICATED FULL GUIDE PAGE VIEW -->
+  <div id="pageView">
+    <div class="back-bar">
+      <button class="back-btn" onclick="goHome()">← Back to Bergen Hub</button>
+      <button class="outline-btn" onclick="copyShareLink()" id="pageShareBtn">Copy Direct Page Link 🔗</button>
     </div>
-  </section>
-
-  <main class="main">
-
-    <section class="journey-bar" id="timeline">
-      <div class="journey-intro">
-        <strong data-en="🧭 Not sure where to start?" data-jp="🧭 何から始めればいい？">🧭 Not sure where to start?</strong>
-        <span data-en="Follow your journey, find what you need:" data-jp="時期ごとの必須タスクをチェック：">Follow your journey, find what you need:</span>
-      </div>
-
-      <div class="journey-steps">
-        <div class="step-item" onclick="openTopic('before')">
-          <div class="step-circle">✈️</div>
-          <strong data-en="Before You Arrive" data-jp="渡航前">Before You Arrive</strong>
-          <span data-en="Get ready for Bergen" data-jp="アプリ・決済準備">Get ready for Bergen</span>
-        </div>
-        <div class="step-arrow">→</div>
-
-        <div class="step-item" onclick="openTopic('week1')">
-          <div class="step-circle">📅</div>
-          <strong data-en="Your First Week" data-jp="到着1週目">Your First Week</strong>
-          <span data-en="Settle in smoothly" data-jp="鍵受け取り・学生証">Settle in smoothly</span>
-        </div>
-        <div class="step-arrow">→</div>
-
-        <div class="step-item" onclick="openTopic('month1')">
-          <div class="step-circle">🏠</div>
-          <strong data-en="After 1 Month" data-jp="1ヶ月後">After 1 Month</strong>
-          <span data-en="Build your routine" data-jp="警察登録・生活習慣">Build your routine</span>
-        </div>
-        <div class="step-arrow">→</div>
-
-        <div class="step-item" onclick="openTopic('studies')">
-          <div class="step-circle">🎓</div>
-          <strong data-en="During Your Studies" data-jp="在学中・試験">During Your Studies</strong>
-          <span data-en="Make the most of it" data-jp="試験・退去掃除">Make the most of it</span>
-        </div>
-      </div>
-
-      <button class="outline-btn" onclick="openTopic('checklist')" data-en="Interactive Checklist →" data-jp="チェックリストを開く →">Interactive Checklist →</button>
-    </section>
-
-    <section class="qa-layout" id="guides">
-      <div>
-        <h2 class="section-title" data-en="▦ Find answers to your questions" data-jp="▦ カテゴリーから探す">▦ Find answers to your questions</h2>
-        <div class="category-grid">
-          <div class="cat-card" onclick="openTopic('housing')">
-            <div class="cat-icon">🏠</div>
-            <div class="cat-title" data-en="Housing & Accommodation" data-jp="寮・住居 (Sammen)">Housing & Accommodation</div>
-            <div class="cat-arrow">→</div>
-          </div>
-
-          <div class="cat-card green" onclick="openTopic('waste')">
-            <div class="cat-icon">♻️</div>
-            <div class="cat-title" data-en="Waste Sorting & Recycling" data-jp="ゴミ分別・リサイクル">Waste Sorting & Recycling</div>
-            <div class="cat-arrow">→</div>
-          </div>
-
-          <div class="cat-card" onclick="openTopic('transport')">
-            <div class="cat-icon">🚋</div>
-            <div class="cat-title" data-en="Transportation (Skyss)" data-jp="交通・定期券 (Skyss)">Transportation (Skyss)</div>
-            <div class="cat-arrow">→</div>
-          </div>
-
-          <div class="cat-card" onclick="openTopic('university')">
-            <div class="cat-icon">🎓</div>
-            <div class="cat-title" data-en="University Life & Exams" data-jp="大学生活・試験 (UiB)">University Life & Exams</div>
-            <div class="cat-arrow">→</div>
-          </div>
-
-          <div class="cat-card purple" onclick="openTopic('studentcard')">
-            <div class="cat-icon">🪪</div>
-            <div class="cat-title" data-en="Student Card & Discounts" data-jp="学生証・学割アプリ">Student Card & Discounts</div>
-            <div class="cat-arrow">→</div>
-          </div>
-
-          <div class="cat-card pink" onclick="openTopic('healthcare')">
-            <div class="cat-icon">🏥</div>
-            <div class="cat-title" data-en="Healthcare & Emergencies" data-jp="病院・救急・健康">Healthcare & Emergencies</div>
-            <div class="cat-arrow">→</div>
-          </div>
-
-          <div class="cat-card" onclick="openTopic('shopping')">
-            <div class="cat-icon">🛒</div>
-            <div class="cat-title" data-en="Shopping & Rain Gear" data-jp="スーパー・雨具対策">Shopping & Rain Gear</div>
-            <div class="cat-arrow">→</div>
-          </div>
-
-          <div class="cat-card" onclick="openTopic('banking')">
-            <div class="cat-icon">💳</div>
-            <div class="cat-title" data-en="No Vipps & Money Hacks" data-jp="Vippsなし決済・銀行">No Vipps & Money Hacks</div>
-            <div class="cat-arrow">→</div>
-          </div>
-
-          <div class="cat-card" onclick="openTopic('social')">
-            <div class="cat-icon">👥</div>
-            <div class="cat-title" data-en="Social Life & Events" data-jp="学生イベント・交流">Social Life & Events</div>
-            <div class="cat-arrow">→</div>
-          </div>
-
-          <div class="cat-card purple" onclick="openTopic('norwegian')">
-            <div class="cat-icon">💬</div>
-            <div class="cat-title" data-en="Norwegian Language" data-jp="ノルウェー語学習">Norwegian Language</div>
-            <div class="cat-arrow">→</div>
-          </div>
-        </div>
-      </div>
-
-      <aside class="popular-box">
-        <h3 data-en="⭐ Popular Questions" data-jp="⭐ よくある質問">⭐ Popular Questions</h3>
-        <ul class="pq-list">
-          <li class="pq-item" onclick="openTopic('banking')">
-            <span>How do I pay without Vipps?</span><span>→</span>
-          </li>
-          <li class="pq-item" onclick="openTopic('housing')">
-            <span>How do I pay my Sammen rent?</span><span>→</span>
-          </li>
-          <li class="pq-item" onclick="openTopic('waste')">
-            <span>Where can I throw away cooking oil?</span><span>→</span>
-          </li>
-          <li class="pq-item" onclick="openTopic('transport')">
-            <span>How do I get a student ticket on Skyss?</span><span>→</span>
-          </li>
-          <li class="pq-item" onclick="openTopic('housing')">
-            <span>What is Sammen Utvask inspection?</span><span>→</span>
-          </li>
-        </ul>
-      </aside>
-    </section>
-
-    <section class="bottom-grid" id="resources">
-      <div class="panel">
-        <h3 data-en="🔗 Essential Links" data-jp="🔗 公式リンク集">🔗 Essential Links</h3>
-        <p class="panel-sub" data-en="Official websites & key services" data-jp="主要サービスへのショートカット">Official websites & key services</p>
-
-        <a class="ext-link" href="https://sammen.no" target="_blank">
-          <span class="ext-left"><span class="ext-badge">🏠</span> Sammen – Housing & Rent</span><span>↗</span>
-        </a>
-        <a class="ext-link" href="https://bir.no" target="_blank">
-          <span class="ext-left"><span class="ext-badge">♻️</span> BIR – Waste Sorting Guide</span><span>↗</span>
-        </a>
-        <a class="ext-link" href="https://skyss.no" target="_blank">
-          <span class="ext-left"><span class="ext-badge">🚋</span> Skyss – Public Transport</span><span>↗</span>
-        </a>
-        <a class="ext-link" href="https://mitt.uib.no" target="_blank">
-          <span class="ext-left"><span class="ext-badge">🎓</span> Mitt UiB – Course Portal</span><span>↗</span>
-        </a>
-        <a class="ext-link" href="https://udi.no" target="_blank">
-          <span class="ext-left"><span class="ext-badge">🛂</span> UDI – Police Registration</span><span>↗</span>
-        </a>
-      </div>
-
-      <div class="panel">
-        <h3 data-en="👤 Your Situation" data-jp="👤 今の状況から探す">👤 Your Situation</h3>
-        <p class="panel-sub" data-en="I want to..." data-jp="現在のフェーズに合わせたガイド">I want to...</p>
-
-        <div class="situation-grid">
-          <div class="sit-card" onclick="openTopic('before')">
-            <div class="sit-img" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=500&q=80');"></div>
-            <div class="sit-body"><span>Prepare before arrival</span><span>→</span></div>
-          </div>
-
-          <div class="sit-card" onclick="openTopic('week1')">
-            <div class="sit-img" style="background-image: url('https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?auto=format&fit=crop&w=500&q=80');"></div>
-            <div class="sit-body"><span>Settle in during the first week</span><span>→</span></div>
-          </div>
-
-          <div class="sit-card" onclick="openTopic('month1')">
-            <div class="sit-img" style="background-image: url('https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?auto=format&fit=crop&w=500&q=80');"></div>
-            <div class="sit-body"><span>Get settled after one month</span><span>→</span></div>
-          </div>
-
-          <div class="sit-card" onclick="openTopic('studies')">
-            <div class="sit-img" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=500&q=80');"></div>
-            <div class="sit-body"><span>Enjoy student life in Bergen</span><span>→</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel help-panel" id="community">
-        <div>
-          <h3 data-en="💡 Need more help?" data-jp="💡 まだ解決しない時は？">💡 Need more help?</h3>
-          <p class="panel-sub" data-en="Ask fellow exchange students or share this guide!" data-jp="留学生仲間と情報をシェアしよう！">Ask fellow exchange students or share this guide!</p>
-        </div>
-
-        <div>
-          <button class="primary-btn" onclick="copyShareLink()" id="shareBtn">Share This Guide Link →</button>
-          <button class="secondary-btn" onclick="openTopic('checklist')">✅ Open Arrival Checklist</button>
-        </div>
-      </div>
-    </section>
-
-  </main>
+    <article class="article-shell" id="pageArticleContent"></article>
+  </div>
 
   <footer>
     <div class="footer-inner">
       <div><strong>⛰️ Bergen Hub</strong> — Built by UiB Exchange Students</div>
       <div class="footer-links">
-        <a href="#guides">Guides</a>
-        <a href="#timeline">Timeline</a>
-        <a href="#resources">Official Links</a>
+        <a onclick="goHome('guides')">Guides</a>
+        <a onclick="goHome('timeline')">Timeline</a>
+        <a onclick="goHome('resources')">Official Links</a>
         <span>Updated 2026</span>
       </div>
     </div>
   </footer>
 
+  <!-- QUICK POPUP MODAL -->
   <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal(event)">
     <div class="modal-card" onclick="event.stopPropagation()">
       <button class="modal-close" onclick="forceCloseModal()">✕</button>
@@ -796,143 +977,560 @@
   <script>
     const topics = {
       checklist: {
+        badge: "Interactive Tracker",
         title: "✅ First 14 Days Arrival Checklist",
-        html: `
-          <p style="color:#5c7080; font-size:0.9rem;">Progress is saved automatically in your browser.</p>
-          <div style="margin-top:0.8rem;">
-            <label class="check-row"><input type="checkbox" data-id="c1" onchange="saveChecks()"><span><strong>Before Landing:</strong> Install <em>Skyss Billett</em> & <em>Skyss Reise</em> and link a Visa/Mastercard.</span></label>
-            <label class="check-row"><input type="checkbox" data-id="c2" onchange="saveChecks()"><span><strong>Airport (BGO):</strong> Take Bybanen Line 1 from the airport terminal straight to the city center.</span></label>
-            <label class="check-row"><input type="checkbox" data-id="c3" onchange="saveChecks()"><span><strong>Sammen Keys:</strong> Pick up your dorm key (check late-arrival keybox instructions in your Sammen email).</span></label>
-            <label class="check-row"><input type="checkbox" data-id="c4" onchange="saveChecks()"><span><strong>UiB IT & Studentbevis:</strong> Activate your UiB account, connect to <em>eduroam</em>, and verify your digital student ID.</span></label>
-            <label class="check-row"><input type="checkbox" data-id="c5" onchange="saveChecks()"><span><strong>Police / UDI Registration:</strong> Attend your residence registration appointment in Bergen (for stays > 90 days).</span></label>
-            <label class="check-row"><input type="checkbox" data-id="c6" onchange="saveChecks()"><span><strong>Supermarket Discounts:</strong> Download <em>Æ</em> (REMA 1000) and <em>Trumf</em> (Kiwi/Meny).</span></label>
-          </div>
-        `
+        summary: "Step-by-step tasks from before landing at BGO to getting your student discounts active. Progress saves automatically.",
+        isChecklist: true,
+        points: [
+          {
+            title: "1. Before Landing: Transport & Money Setup",
+            desc: "Install Skyss Billett and set up Revolut/Wise with a Visa or Mastercard so you can buy tram tickets immediately.",
+            links: [
+              { label: "Skyss Official Site", url: "https://www.skyss.no/en/" },
+              { label: "No Vipps & Money Guide", internal: "banking" }
+            ]
+          },
+          {
+            title: "2. Airport (BGO) to City Center / Fantoft",
+            desc: "Take Bybanen Line 1 right outside the terminal. Buy your ticket in the app BEFORE stepping onto the tram.",
+            links: [
+              { label: "Transport Guide", internal: "transport" }
+            ]
+          },
+          {
+            title: "3. Sammen Dorm Key & Inventory Check",
+            desc: "Pick up your key (or check your email for late-arrival keybox codes) and report any room issues within 48 hours.",
+            links: [
+              { label: "Sammen Housing Portal", url: "https://bolig.sammen.no" },
+              { label: "Housing & Utvask Guide", internal: "housing" }
+            ]
+          },
+          {
+            title: "4. UiB IT Account & Studentbevis App",
+            desc: "Activate your UiB login, connect to eduroam Wi-Fi, and log into the Studentbevis app to unlock 40% off transit.",
+            links: [
+              { label: "Mitt UiB Portal", url: "https://mitt.uib.no" },
+              { label: "Student Card Guide", internal: "studentcard" }
+            ]
+          },
+          {
+            title: "5. Police / UDI Registration (Stays > 90 Days)",
+            desc: "Book and attend your residence registration appointment in Bergen with your passport and admission letter.",
+            links: [
+              { label: "UDI Registration Portal", url: "https://www.udi.no/en/" }
+            ]
+          }
+        ],
+        related: ["before", "week1", "banking", "housing", "transport"]
       },
       banking: {
+        badge: "Money & Payments",
         title: "💳 No Vipps & Money Hacks",
-        html: `
-          <ul>
-            <li><strong>Why you can't get Vipps immediately:</strong> Vipps requires a Norwegian BankID and national/D-number, which takes months (and 1-semester students usually aren't eligible).</li>
-            <li><strong>Use Revolut or Wise:</strong> Almost all international students in Bergen split bills via Revolut, Wise, or PayPal. Set yours up before arriving.</li>
-            <li><strong>Student Events (ESN / Kvarteret):</strong> If a ticket form only shows Vipps, DM the organizers on Instagram—they will give you a card payment link or Revolut option.</li>
-            <li><strong>100% Cashless:</strong> You do not need physical NOK cash. Tap-to-pay cards and Apple/Google Pay work everywhere, even at small bakeries.</li>
-          </ul>
-        `
+        summary: "How to pay rent, split bills with friends, and buy event tickets without a Norwegian bank account.",
+        points: [
+          {
+            title: "Why you can't get Vipps immediately",
+            desc: "Vipps requires a Norwegian BankID and national/D-number, which 1-semester exchange students usually cannot get in time.",
+            links: [
+              { label: "UDI Identity Number Info", url: "https://www.udi.no/en/" }
+            ]
+          },
+          {
+            title: "Use Revolut or Wise for Splitting Bills",
+            desc: "Almost all international students in Bergen split dinner, cabin trips, and secondhand items via Revolut or Wise.",
+            links: [
+              { label: "Open Revolut", url: "https://www.revolut.com/" },
+              { label: "Open Wise", url: "https://wise.com/" }
+            ]
+          },
+          {
+            title: "Paying for Student Events (ESN / Kvarteret)",
+            desc: "If a signup form only lists Vipps, message the organizers—they will provide a card link, Revolut handle, or door payment.",
+            links: [
+              { label: "ESN Bergen", url: "https://bergen.esn.no/" },
+              { label: "Det Akademiske Kvarter", url: "https://kvarteret.no/" }
+            ]
+          },
+          {
+            title: "100% Cashless City",
+            desc: "You don't need physical NOK cash. Tap-to-pay cards and Apple/Google Pay work everywhere, even for a single coffee.",
+            links: [
+              { label: "How to Pay Sammen Rent", internal: "housing" }
+            ]
+          }
+        ],
+        related: ["housing", "shopping", "before"]
       },
       housing: {
+        badge: "Accommodation",
         title: "🏠 Housing & Sammen Rent / Utvask",
-        html: `
-          <ul>
-            <li><strong>Paying Sammen Rent:</strong> Log in to <em>bolig.sammen.no</em>. International students without a Norwegian bank can pay their monthly invoice directly by Visa/Mastercard inside the portal.</li>
-            <li><strong>Laundry (Miele App):</strong> Most Sammen dorms (Fantoft, Alrek, Hatleberg) use the <em>AppWash by Miele</em> app to book and pay for washing machines.</li>
-            <li><strong>Move-Out Inspection (Utvask):</strong> Before leaving Bergen, you must deep-clean your room, fridge, bathroom, and shared kitchen. Sammen charges heavy fees if dust is left on top of wardrobes or inside air vents.</li>
-          </ul>
-        `
+        summary: "Everything about paying your monthly dorm invoice, booking laundry, and passing the move-out cleaning check.",
+        points: [
+          {
+            title: "Paying Sammen Rent with International Card",
+            desc: "Log in to bolig.sammen.no -> Invoices. You can pay monthly rent directly with Visa/Mastercard without a Norwegian bank.",
+            links: [
+              { label: "Log in to Bolig Sammen", url: "https://bolig.sammen.no" }
+            ]
+          },
+          {
+            title: "Booking Laundry Machines",
+            desc: "Most Sammen student villages (Fantoft, Alrek, Hatleberg) use the AppWash by Miele app to reserve and pay for washers.",
+            links: [
+              { label: "Sammen Housing Info", url: "https://www.sammen.no/en/housing" }
+            ]
+          },
+          {
+            title: "Move-Out Cleaning Inspection (Utvask)",
+            desc: "Before leaving Bergen, deep-clean your room, fridge, bathroom, and shared kitchen vents to avoid heavy cleaning deductions.",
+            links: [
+              { label: "Sammen Moving Out Guide", url: "https://www.sammen.no/en/housing" },
+              { label: "Waste Disposal Rules", internal: "waste" }
+            ]
+          }
+        ],
+        related: ["waste", "banking", "week1", "studies"]
       },
       waste: {
+        badge: "Sustainability & Rules",
         title: "♻️ Waste Sorting & Recycling (BIR)",
-        html: `
-          <ul>
-            <li><strong>Paper & Cardboard:</strong> Blue/paper bins or underground BIR inlets (use your Sammen key tag/brikke if locked).</li>
-            <li><strong>Plastic Packaging:</strong> Clean plastic goes into special transparent BIR plastic bags (free at grocery store checkouts).</li>
-            <li><strong>Glass & Metal:</strong> Drop off at neighborhood igloo containers (often next to REMA 1000 or Kiwi).</li>
-            <li><strong>Cooking Oil & Batteries:</strong> Never pour cooking oil down the sink! Collect cooled oil in a sealed plastic bottle/carton and throw it in residual waste (<em>restavfall</em>), or drop large amounts at a BIR recycling station.</li>
-          </ul>
-        `
+        summary: "Bergen uses strict waste sorting and underground vacuum inlets. Here is where every type of trash goes.",
+        points: [
+          {
+            title: "Paper, Cardboard & Residual Waste (Restavfall)",
+            desc: "Use your Sammen key tag (brikke) to unlock the underground BIR inlets outside your dorm.",
+            links: [
+              { label: "BIR Official Sorting Guide", url: "https://bir.no" }
+            ]
+          },
+          {
+            title: "Plastic Packaging (Transparent Bags)",
+            desc: "Clean plastic packaging goes in special transparent BIR bags—ask for a free roll at grocery store checkouts.",
+            links: [
+              { label: "Supermarket Tips", internal: "shopping" }
+            ]
+          },
+          {
+            title: "Where to Throw Away Cooking Oil & Batteries",
+            desc: "Never pour oil down the sink! Cool it in a sealed plastic bottle/carton and put it in residual waste (or a BIR recycling station).",
+            links: [
+              { label: "Find BIR Recycling Stations", url: "https://bir.no" }
+            ]
+          },
+          {
+            title: "Bottle Deposit Return (Pant)",
+            desc: "Return cans and plastic bottles with the 'Pant' symbol into supermarket machines for 2–3 NOK back per bottle.",
+            links: [
+              { label: "Shopping & Savings Guide", internal: "shopping" }
+            ]
+          }
+        ],
+        related: ["housing", "shopping", "month1"]
       },
       transport: {
+        badge: "Getting Around",
         title: "🚋 Transportation & Skyss Student Pass",
-        html: `
-          <ul>
-            <li><strong>Bybanen (Light Rail):</strong> Line 1 runs from Bergen Airport (BGO) through Fantoft and the city center (Byparken). Line 2 serves Haukeland / Alrek / Kronstad.</li>
-            <li><strong>Student Discount (40% off):</strong> Once your semester fee is registered and your <em>Studentbevis</em> app shows a green valid status, select the <strong>Student</strong> ticket in <em>Skyss Billett</em>.</li>
-            <li><strong>Ticket Inspections:</strong> Controllers check tickets frequently in plain clothes. Always buy your ticket <em>before</em> boarding!</li>
-          </ul>
-        `
+        summary: "How to ride Bybanen (light rail) and buses across Bergen with the 40% student discount.",
+        points: [
+          {
+            title: "Bybanen Lines 1 & 2",
+            desc: "Line 1 connects Bergen Airport (BGO), Fantoft, and Byparken (City Center). Line 2 connects Haukeland, Alrek, and Kronstad.",
+            links: [
+              { label: "Skyss Journey Planner", url: "https://www.skyss.no/en/" }
+            ]
+          },
+          {
+            title: "Getting the 40% Student Discount",
+            desc: "Once your Studentbevis app shows a green valid status, select 'Student' (20–29 yrs) in Skyss Billett for single or 30-day tickets.",
+            links: [
+              { label: "Skyss Ticket Info", url: "https://www.skyss.no/en/tickets-and-prices/" },
+              { label: "Activate Student Card", internal: "studentcard" }
+            ]
+          },
+          {
+            title: "Avoid 1,150+ NOK Inspection Fines",
+            desc: "Plain-clothes ticket inspectors board frequently. Always activate your ticket BEFORE stepping onto the bus or Bybanen.",
+            links: [
+              { label: "Skyss Rules & Zones", url: "https://www.skyss.no/en/" }
+            ]
+          }
+        ],
+        related: ["studentcard", "week1", "social"]
       },
       university: {
+        badge: "Academics & Exams",
         title: "🎓 University Life & Exams (UiB)",
-        html: `
-          <ul>
-            <li><strong>Mitt UiB:</strong> Your main hub for lecture slides, schedules, and messages from professors.</li>
-            <li><strong>Digital Exams (Inspera):</strong> Most exams are taken on your own laptop using <em>Safe Exam Browser</em>. Run the demo test on <em>vurdering.uib.no</em> at least 1 week early.</li>
-            <li><strong>Reading Rooms (Lesesal):</strong> Don't leave bags unattended for hours to reserve seats—libraries enforce strict break time limits.</li>
-          </ul>
-        `
+        summary: "Essential portals, digital exam software, and library etiquette at the University of Bergen.",
+        points: [
+          {
+            title: "Mitt UiB (Course Portal)",
+            desc: "Check lecture schedules, download reading lists, and submit seminar assignments on Mitt UiB.",
+            links: [
+              { label: "Open Mitt UiB", url: "https://mitt.uib.no" }
+            ]
+          },
+          {
+            title: "Digital Exams (Inspera & Safe Exam Browser)",
+            desc: "Most exams run on your personal laptop using Safe Exam Browser. Run the demo test at least 1 week before exam day.",
+            links: [
+              { label: "UiB Exam Portal (Vurdering)", url: "https://vurdering.uib.no" },
+              { label: "UiB Student Pages", url: "https://www.uib.no/en/student" }
+            ]
+          },
+          {
+            title: "Studentweb (Course Registration)",
+            desc: "Confirm your semester registration, view grades, and order official transcripts on Studentweb.",
+            links: [
+              { label: "Open Studentweb", url: "https://fsweb.no/studentweb/" }
+            ]
+          }
+        ],
+        related: ["studentcard", "studies", "norwegian"]
       },
       studentcard: {
+        badge: "ID & Perks",
         title: "🪪 Student Card & Discounts",
-        html: `
-          <ul>
-            <li><strong>Digital ID:</strong> Download the <em>Studentbevis</em> app (log in via Feide). This is valid for Skyss, trains (Vy), museums, and student bars.</li>
-            <li><strong>Physical Keycard:</strong> Pick up your physical UiB card at the Student Centre (Parkveien 1) for 24/7 building access and printing.</li>
-          </ul>
-        `
+        summary: "Your digital ID unlocks transit discounts, museum entry, and student culture houses.",
+        points: [
+          {
+            title: "Studentbevis App (Digital ID)",
+            desc: "Download 'Studentbevis' and log in with Feide after paying your semester fee. Required when showing student tickets on Skyss/Vy.",
+            links: [
+              { label: "UiB Student Card Guide", url: "https://www.uib.no/en/student" },
+              { label: "Skyss Student Pass", internal: "transport" }
+            ]
+          },
+          {
+            title: "Physical UiB Keycard",
+            desc: "Pick up your physical card at the Student Centre (Parkveien 1) for 24/7 faculty building access and campus printing.",
+            links: [
+              { label: "UiB Campus Map", url: "https://use.mazemap.com/" }
+            ]
+          }
+        ],
+        related: ["transport", "university", "week1"]
       },
       healthcare: {
+        badge: "Safety & Health",
         title: "🏥 Healthcare & Emergencies",
-        html: `
-          <ul>
-            <li><strong>Emergency Numbers:</strong> Medical Emergency: <strong>113</strong> | Police: <strong>112</strong> | Fire: <strong>110</strong>.</li>
-            <li><strong>Urgent Care (Bergen Legevakt):</strong> Located at Solheimsgaten 9 (near Danmarksplass). Call <strong>116 117</strong> first before walking in for non-life-threatening urgent issues.</li>
-            <li><strong>Sammen Health:</strong> Sammen offers subsidized mental health counseling and general health advice for students.</li>
-          </ul>
-        `
+        summary: "Emergency numbers, urgent care clinic locations, and Sammen student health services.",
+        points: [
+          {
+            title: "Norwegian Emergency Numbers",
+            desc: "Medical Ambulance: 113 | Police: 112 | Fire: 110. Save these in your phone upon arrival.",
+            links: [
+              { label: "Helsenorge (Official Health Info)", url: "https://www.helsenorge.no/en/" }
+            ]
+          },
+          {
+            title: "Bergen Legevakt (24/7 Urgent Care)",
+            desc: "Located at Solheimsgaten 9 (near Danmarksplass). Always call 116 117 first for non-life-threatening urgent medical advice.",
+            links: [
+              { label: "Bergen Legevakt Info", url: "https://www.bergen.kommune.no/" }
+            ]
+          },
+          {
+            title: "Sammen Health & Counseling",
+            desc: "Sammen provides free/subsidized mental health support, GP advice, and dental refund schemes for students.",
+            links: [
+              { label: "Sammen Health Services", url: "https://www.sammen.no/en/health" }
+            ]
+          }
+        ],
+        related: ["week1", "housing"]
       },
       shopping: {
-        title: "🛒 Groceries, Cheap Eats & Rain Gear",
-        html: `
-          <ul>
-            <li><strong>Cheapest Supermarkets:</strong> <em>REMA 1000</em> and <em>Kiwi</em>. Look for budget brands <em>First Price</em> and <em>Prima</em>.</li>
-            <li><strong>Too Good To Go:</strong> Reserve mystery bags around 20:00–22:00 for 39–49 NOK from bakeries and Meny.</li>
-            <li><strong>Bergen Rain Rule:</strong> Skip umbrellas—sideways wind breaks them fast. Get a waterproof shell jacket (10,000mm+ water column) and waterproof shoes.</li>
-          </ul>
-        `
+        badge: "Daily Life",
+        title: "🛒 Shopping, Cheap Eats & Rain Gear",
+        summary: "How to save money on groceries in Norway and dress properly for Bergen's famous rain.",
+        points: [
+          {
+            title: "Budget Supermarkets & Loyalty Apps",
+            desc: "Shop at REMA 1000 and Kiwi for the lowest prices. Look for 'First Price' and 'Prima' items, and use the Æ and Trumf apps.",
+            links: [
+              { label: "REMA 1000", url: "https://www.rema.no/" },
+              { label: "Kiwi", url: "https://kiwi.no/" }
+            ]
+          },
+          {
+            title: "Too Good To Go (40 NOK Magic Bags)",
+            desc: "Reserve surplus bread, pastries, and groceries from local bakeries and Meny supermarkets in the evening for a fraction of retail price.",
+            links: [
+              { label: "Too Good To Go", url: "https://www.toogoodtogo.com/" }
+            ]
+          },
+          {
+            title: "Secondhand Gear & Furniture (Finn.no)",
+            desc: "Find free or cheap winter jackets, bikes, lamps, and kitchenware on Finn.no ('Gis bort' = free) or student Facebook groups.",
+            links: [
+              { label: "Browse Finn.no", url: "https://www.finn.no/" }
+            ]
+          }
+        ],
+        related: ["banking", "waste", "before"]
       },
       social: {
+        badge: "Community",
         title: "👥 Social Life & Events",
-        html: `
-          <ul>
-            <li><strong>Det Akademiske Kvarter:</strong> The student-run culture house in the city center with concerts, quiz nights, and cheap student drinks.</li>
-            <li><strong>ESN Bergen:</strong> Organizes welcome week parties, cabin trips, and hikes for exchange students.</li>
-            <li><strong>Hiking (Byfjellene):</strong> Hike Mount Fløyen or Ulriken with friends—free, iconic views, and right above campus.</li>
-          </ul>
-        `
+        summary: "Where to meet Norwegian and international students, join cabin trips, and hike the 7 mountains.",
+        points: [
+          {
+            title: "Det Akademiske Kvarter",
+            desc: "Bergen's student-run culture house in the city center with live concerts, quiz nights, debates, and student-priced drinks.",
+            links: [
+              { label: "Kvarteret Event Calendar", url: "https://kvarteret.no/" }
+            ]
+          },
+          {
+            title: "ESN Bergen (Erasmus Student Network)",
+            desc: "Organizes welcome week activities, fjord boat trips, cabin weekends, and buddy groups for exchange students.",
+            links: [
+              { label: "ESN Bergen Website", url: "https://bergen.esn.no/" }
+            ]
+          },
+          {
+            title: "Hike the Seven Mountains (Byfjellene)",
+            desc: "Walk up Mount Fløyen, Ulriken, or Sandviksfjellet with friends—completely free and accessible right from the city.",
+            links: [
+              { label: "UT.no Trail Maps", url: "https://ut.no/" }
+            ]
+          }
+        ],
+        related: ["norwegian", "studies", "week1"]
       },
       norwegian: {
-        title: "💬 Norwegian Language Tips",
-        html: `
-          <ul>
-            <li><strong>Everyone speaks English:</strong> You can easily survive in English, though locals love when you say <em>"Tusen takk"</em> (Thank you very much) and <em>"Ha det bra"</em> (Goodbye).</li>
-            <li><strong>UiB Courses:</strong> Check <em>NOR-INTRO</em> or Tandem language exchange events at the library to practice with Norwegian students.</li>
-          </ul>
-        `
+        badge: "Language & Culture",
+        title: "💬 Norwegian Language",
+        summary: "Useful everyday phrases and free ways to practice Norwegian while studying at UiB.",
+        points: [
+          {
+            title: "Everyone Speaks Fluent English",
+            desc: "You can manage all daily life in English, though saying 'Tusen takk' (Thank you very much) and 'Ha det bra' (Goodbye) always brings smiles.",
+            links: [
+              { label: "UiB Norwegian Courses", url: "https://www.uib.no/en/fg/norwegian" }
+            ]
+          },
+          {
+            title: "Språkkafé (Language Café) at the Library",
+            desc: "Join weekly informal language exchange sessions at Bergen Public Library or UiB student hubs to practice over free coffee.",
+            links: [
+              { label: "Bergen Offentlige Bibliotek", url: "https://bergenbibliotek.no/" }
+            ]
+          }
+        ],
+        related: ["university", "social"]
       },
       before: {
+        badge: "Timeline • Phase 1",
         title: "✈️ Before You Arrive",
-        html: `<ul><li>Set up <strong>Revolut / Wise</strong> for fee-free NOK payments.</li><li>Download <strong>Skyss Billett</strong> and <strong>Skyss Reise</strong>.</li><li>Pack waterproof layers and a good rain shell jacket.</li></ul>`
+        summary: "Prepare your apps, payment cards, and waterproof clothing before flying to Bergen.",
+        points: [
+          {
+            title: "Set Up Revolut or Wise",
+            desc: "Avoid foreign transaction fees and get ready to split bills without Vipps.",
+            links: [
+              { label: "No Vipps & Money Guide", internal: "banking" },
+              { label: "Wise", url: "https://wise.com/" }
+            ]
+          },
+          {
+            title: "Download Skyss Billett",
+            desc: "Add your payment card before boarding your flight so you can buy your airport Bybanen ticket in 10 seconds.",
+            links: [
+              { label: "Transport Guide", internal: "transport" }
+            ]
+          },
+          {
+            title: "Pack Proper Rain Gear",
+            desc: "Skip umbrellas—coastal wind breaks them easily. Bring a waterproof shell jacket and waterproof boots/sneakers.",
+            links: [
+              { label: "Shopping & Gear Guide", internal: "shopping" }
+            ]
+          }
+        ],
+        related: ["week1", "checklist", "banking", "transport"]
       },
       week1: {
+        badge: "Timeline • Phase 2",
         title: "📅 Your First Week in Bergen",
-        html: `<ul><li>Collect your <strong>Sammen key</strong> and check your room inventory list within 48 hours.</li><li>Activate your <strong>UiB IT account</strong> and <strong>Studentbevis</strong> app to unlock 40% off Skyss transit.</li><li>Join ESN / faculty orientation events.</li></ul>`
+        summary: "Get your dorm keys, activate your student ID, and join orientation events.",
+        points: [
+          {
+            title: "Collect Your Sammen Key",
+            desc: "Check your Sammen welcome email for key pickup hours or late-night keybox instructions.",
+            links: [
+              { label: "Sammen Housing Guide", internal: "housing" },
+              { label: "Bolig Sammen", url: "https://bolig.sammen.no" }
+            ]
+          },
+          {
+            title: "Activate UiB Account & Studentbevis",
+            desc: "Unlock eduroam Wi-Fi on campus and verify your digital student card for 40% off Skyss.",
+            links: [
+              { label: "Student Card Guide", internal: "studentcard" }
+            ]
+          },
+          {
+            title: "Attend Faculty & ESN Welcome Events",
+            desc: "Meet your mentor group and fellow exchange students during the first week.",
+            links: [
+              { label: "Social Life & Events", internal: "social" }
+            ]
+          }
+        ],
+        related: ["before", "month1", "checklist", "housing"]
       },
       month1: {
+        badge: "Timeline • Phase 3",
         title: "🏠 After 1 Month",
-        html: `<ul><li>Complete your <strong>UDI / Police registration</strong> appointment.</li><li>Get familiar with <strong>BIR waste sorting</strong> rules in your dorm.</li><li>Explore secondhand gear on <strong>Finn.no</strong> or Facebook exchange groups.</li></ul>`
+        summary: "Complete legal registration, master local recycling rules, and settle into your routine.",
+        points: [
+          {
+            title: "Attend UDI / Police Registration",
+            desc: "Bring your passport, UiB admission letter, and housing contract to your scheduled appointment.",
+            links: [
+              { label: "UDI Official Website", url: "https://www.udi.no/en/" }
+            ]
+          },
+          {
+            title: "Master BIR Waste Sorting & Pant",
+            desc: "Get transparent plastic bags at the supermarket and locate your nearest glass/metal igloo.",
+            links: [
+              { label: "Waste Sorting Guide", internal: "waste" }
+            ]
+          },
+          {
+            title: "Pay Your Second Month Sammen Rent",
+            desc: "Remember to log into the Sammen portal monthly as invoices are not auto-charged to foreign cards.",
+            links: [
+              { label: "Bolig Sammen Portal", url: "https://bolig.sammen.no" }
+            ]
+          }
+        ],
+        related: ["week1", "studies", "waste", "housing"]
       },
       studies: {
+        badge: "Timeline • Phase 4",
         title: "🎓 During Your Studies & Move-Out",
-        html: `<ul><li>Test <strong>Safe Exam Browser</strong> on <em>vurdering.uib.no</em> before finals.</li><li>Book your <strong>Sammen Utvask</strong> cleaning check early before your flight home.</li></ul>`
+        summary: "Prepare for digital exams at UiB and plan a smooth Utvask move-out inspection.",
+        points: [
+          {
+            title: "Test Safe Exam Browser Early",
+            desc: "Run the Inspera demo exam on your laptop at least a week before finals.",
+            links: [
+              { label: "UiB Exam Portal", url: "https://vurdering.uib.no" },
+              { label: "University & Exams Guide", internal: "university" }
+            ]
+          },
+          {
+            title: "Book Your Sammen Utvask Inspection",
+            desc: "Schedule your move-out cleaning check before your flight home and deep-clean all shared spaces.",
+            links: [
+              { label: "Housing & Utvask Guide", internal: "housing" },
+              { label: "Sammen Housing", url: "https://www.sammen.no/en/housing" }
+            ]
+          }
+        ],
+        related: ["month1", "university", "housing"]
       }
     };
+
+    function renderPointsHTML(list) {
+      return `<div class="point-list">` + list.map(item => {
+        const linksHtml = (item.links || []).map(l => {
+          if (l.internal) {
+            return `<button class="jump-chip internal" onclick="openFullPage('${l.internal}')">📄 ${l.label} →</button>`;
+          }
+          return `<a class="jump-chip" href="${l.url}" target="_blank" rel="noopener">${l.label} ↗</a>`;
+        }).join('');
+        return `
+          <div class="point-item">
+            <div class="point-title">${item.title}</div>
+            <div class="point-desc">${item.desc}</div>
+            ${linksHtml ? `<div class="point-links">${linksHtml}</div>` : ''}
+          </div>
+        `;
+      }).join('') + `</div>`;
+    }
+
+    function renderChecklistHTML() {
+      return `
+        <div style="margin-bottom:1rem;">
+          <label class="check-row"><input type="checkbox" data-id="c1" onchange="saveChecks()"><span><strong>Before Landing:</strong> Install <em>Skyss Billett</em> and link a Visa/Mastercard.</span></label>
+          <label class="check-row"><input type="checkbox" data-id="c2" onchange="saveChecks()"><span><strong>Airport (BGO):</strong> Take Bybanen Line 1 from the terminal to Fantoft / City Center.</span></label>
+          <label class="check-row"><input type="checkbox" data-id="c3" onchange="saveChecks()"><span><strong>Sammen Keys:</strong> Collect your dorm key and check room inventory within 48 hours.</span></label>
+          <label class="check-row"><input type="checkbox" data-id="c4" onchange="saveChecks()"><span><strong>UiB IT & Studentbevis:</strong> Activate UiB account, <em>eduroam</em>, and digital student ID.</span></label>
+          <label class="check-row"><input type="checkbox" data-id="c5" onchange="saveChecks()"><span><strong>Police / UDI Registration:</strong> Attend your residence registration appointment in Bergen.</span></label>
+          <label class="check-row"><input type="checkbox" data-id="c6" onchange="saveChecks()"><span><strong>Supermarket Apps:</strong> Download <em>Æ</em> (REMA 1000) and <em>Trumf</em> (Kiwi/Meny).</span></label>
+        </div>
+      `;
+    }
 
     function openTopic(key) {
       const data = topics[key];
       if (!data) return;
-      document.getElementById('modalContent').innerHTML = `<h2>${data.title}</h2>${data.html}`;
+      const bodyHtml = data.isChecklist
+        ? renderChecklistHTML() + renderPointsHTML(data.points)
+        : renderPointsHTML(data.points);
+
+      document.getElementById('modalContent').innerHTML = `
+        <h2>${data.title}</h2>
+        <p class="modal-sub">${data.summary}</p>
+        ${bodyHtml}
+        <div class="modal-footer-bar">
+          <span style="font-size:0.8rem; color:#5c7080;">Want a dedicated view & related topics?</span>
+          <button class="fullpage-cta" onclick="openFullPage('${key}')">Open Full Guide Page →</button>
+        </div>
+      `;
       document.getElementById('modalBackdrop').classList.add('open');
-      if (key === 'checklist') loadChecks();
+      if (data.isChecklist) loadChecks();
+    }
+
+    function openFullPage(key) {
+      const data = topics[key];
+      if (!data) return;
+      forceCloseModal();
+
+      const bodyHtml = data.isChecklist
+        ? renderChecklistHTML() + `<h3 class="article-section-title">Detailed Breakdown & Links</h3>` + renderPointsHTML(data.points)
+        : renderPointsHTML(data.points);
+
+      const relatedHtml = (data.related || []).map(rKey => {
+        const rTopic = topics[rKey];
+        if (!rTopic) return '';
+        return `<button class="jump-chip internal" onclick="openFullPage('${rKey}')">${rTopic.title} →</button>`;
+      }).join('');
+
+      document.getElementById('pageArticleContent').innerHTML = `
+        <span class="article-badge">${data.badge}</span>
+        <h1>${data.title}</h1>
+        <p class="article-lead">${data.summary}</p>
+        ${bodyHtml}
+        ${relatedHtml ? `
+          <div class="related-nav">
+            <strong style="font-size:0.92rem; color:#142b3b;">🧭 Jump to Related Guide Pages:</strong>
+            <div class="related-chips">${relatedHtml}</div>
+          </div>
+        ` : ''}
+      `;
+
+      document.getElementById('homeView').style.display = 'none';
+      document.getElementById('pageView').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.replaceState(null, '', '#guide/' + key);
+      if (data.isChecklist) loadChecks();
+    }
+
+    function goHome(sectionId) {
+      document.getElementById('pageView').classList.remove('active');
+      document.getElementById('homeView').style.display = 'block';
+      history.replaceState(null, '', window.location.pathname);
+      if (sectionId) {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
 
     function closeModal(e) {
@@ -943,12 +1541,12 @@
     }
 
     function saveChecks() {
-      document.querySelectorAll('#modalContent input[type="checkbox"]').forEach(cb => {
+      document.querySelectorAll('input[type="checkbox"][data-id]').forEach(cb => {
         localStorage.setItem(cb.dataset.id, cb.checked ? 'true' : 'false');
       });
     }
     function loadChecks() {
-      document.querySelectorAll('#modalContent input[type="checkbox"]').forEach(cb => {
+      document.querySelectorAll('input[type="checkbox"][data-id]').forEach(cb => {
         if (localStorage.getItem(cb.dataset.id) === 'true') cb.checked = true;
       });
     }
@@ -978,10 +1576,23 @@
 
     function copyShareLink() {
       navigator.clipboard.writeText(window.location.href);
-      const btn = document.getElementById('shareBtn');
-      btn.textContent = '✓ Link Copied!';
-      setTimeout(() => { btn.textContent = 'Share This Guide Link →'; }, 2000);
+      ['shareBtn', 'pageShareBtn'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) {
+          const orig = btn.textContent;
+          btn.textContent = '✓ Link Copied!';
+          setTimeout(() => { btn.textContent = orig; }, 2000);
+        }
+      });
     }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash;
+      if (hash.startsWith('#guide/')) {
+        const key = hash.replace('#guide/', '');
+        if (topics[key]) openFullPage(key);
+      }
+    });
   </script>
 </body>
 </html>
