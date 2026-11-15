@@ -213,3 +213,775 @@
       padding: 1.25rem 1.5rem;
       box-shadow: 0 4px 16px rgba(0,0,0,0.04);
       border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .journey-intro { max-width: 210px; }
+    .journey-intro strong { display: block; font-size: 0.95rem; color: var(--navy); }
+    .journey-intro span { font-size: 0.82rem; color: var(--muted); }
+
+    .journey-steps {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex: 1;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .step-item {
+      text-align: center;
+      cursor: pointer;
+      padding: 0.4rem 0.6rem;
+      border-radius: 10px;
+    }
+    .step-item:hover { background: var(--bg); }
+    .step-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.45rem;
+      font-size: 1.15rem;
+    }
+    .step-item:nth-child(3) .step-circle { background: #3b7ea1; }
+    .step-item:nth-child(5) .step-circle { background: #2d8a68; }
+    .step-item:nth-child(7) .step-circle { background: #5a4b81; }
+    .step-item strong { display: block; font-size: 0.85rem; color: var(--navy); }
+    .step-item span { font-size: 0.75rem; color: var(--muted); }
+    .step-arrow { color: #cbd5e1; font-weight: bold; }
+
+    .outline-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--navy);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .outline-btn:hover { border-color: var(--navy); background: var(--bg); }
+
+    /* Grid Layout: Categories + Popular Questions */
+    .qa-layout {
+      display: grid;
+      grid-template-columns: 1fr 290px;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.85rem;
+    }
+    .cat-card {
+      background: var(--card-blue);
+      border-radius: 14px;
+      padding: 1.15rem 0.75rem;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid rgba(0,0,0,0.04);
+      transition: transform 0.18s, box-shadow 0.18s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 122px;
+    }
+    .cat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(20, 43, 59, 0.08);
+    }
+    .cat-card.green { background: var(--card-green); }
+    .cat-card.purple { background: var(--card-purple); }
+    .cat-card.pink { background: var(--card-pink); }
+
+    .cat-icon { font-size: 1.5rem; margin-bottom: 0.45rem; }
+    .cat-title { font-size: 0.83rem; font-weight: 600; color: var(--navy); line-height: 1.3; }
+    .cat-arrow { font-size: 0.8rem; color: var(--muted); margin-top: 0.35rem; }
+
+    /* Popular Questions Sidebar */
+    .popular-box {
+      background: var(--card-amber);
+      border-radius: 16px;
+      padding: 1.25rem;
+      border: 1px solid #f5e6c4;
+    }
+    .popular-box h3 {
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 0.85rem;
+    }
+    .pq-list { list-style: none; }
+    .pq-item {
+      padding: 0.65rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    .pq-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .pq-item:hover { color: var(--fjord); }
+
+    /* Bottom 3-Column Section */
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr 260px;
+      gap: 1.25rem;
+    }
+    .panel {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 1.3rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    .panel h3 {
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+    .panel-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    /* Essential Links */
+    .ext-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.55rem 0;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-bottom: 1px solid var(--bg);
+    }
+    .ext-link:hover { color: var(--fjord); }
+    .ext-left { display: flex; align-items: center; gap: 0.55rem; }
+    .ext-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: var(--card-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+
+    /* Your Situation Cards */
+    .situation-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+    .sit-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .sit-card:hover { transform: translateY(-2px); }
+    .sit-img {
+      height: 110px;
+      background-size: cover;
+      background-position: center;
+    }
+    .sit-body {
+      padding: 0.65rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--navy);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex: 1;
+    }
+
+    /* Need More Help Card */
+    .help-panel {
+      background: var(--card-blue);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .primary-btn {
+      width: 100%;
+      background: var(--navy);
+      color: white;
+      border: none;
+      padding: 0.7rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      margin: 0.8rem 0;
+    }
+    .secondary-btn {
+      width: 100%;
+      background: var(--surface);
+      color: var(--navy);
+      border: 1px solid var(--border);
+      padding: 0.6rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.83rem;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.8);
+      padding: 1.5rem 1.25rem;
+      font-size: 0.82rem;
+    }
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.8); text-decoration: none; }
+
+    /* Modal */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-card {
+      background: var(--surface);
+      border-radius: 16px;
+      max-width: 620px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 1.6rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--bg);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    .modal-card h2 { color: var(--navy); margin-bottom: 0.75rem; font-size: 1.3rem; }
+    .modal-card ul { padding-left: 1.2rem; margin-top: 0.6rem; }
+    .modal-card li { margin-bottom: 0.6rem; font-size: 0.93rem; }
+    .check-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--bg);
+      cursor: pointer;
+      font-size: 0.92rem;
+    }
+    .check-row input { margin-top: 0.25rem; accent-color: var(--navy); width: 17px; height: 17px; }
+
+    @media (max-width: 980px) {
+      .qa-layout { grid-template-columns: 1fr; }
+      .category-grid { grid-template-columns: repeat(3, 1fr); }
+      .bottom-grid { grid-template-columns: 1fr; }
+      .welcome-sticker { display: none; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .category-grid { grid-template-columns: repeat(2, 1fr); }
+      .situation-grid { grid-template-columns: repeat(2, 1fr); }
+      .step-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <div class="logo-icon">⛰️</div>
+        <div class="logo-text">
+          <strong>Bergen Hub</strong>
+          <span>Live. Study. Belong.</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#guides" data-en="Guides" data-jp="ガイド一覧">Guides</a></li>
+        <li><a href="#timeline" data-en="Timeline" data-jp="タイムライン">Timeline</a></li>
+        <li><a href="#resources" data-en="Resources" data-jp="公式リンク">Resources</a></li>
+        <li><a href="#community" data-en="Community" data-jp="コミュニティ">Community</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="lang-toggle">
+          <button class="lang-btn active" onclick="setLang('en', this)">EN</button>
+          <button class="lang-btn" onclick="setLang('jp', this)">日本語</button>
+        </div>
+        <button class="ask-btn" onclick="openTopic('checklist')">
+          <span>💬</span> <span data-en="Arrival Checklist" data-jp="到着チェックリスト">Arrival Checklist</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="welcome-sticker">Welcome<br>to Bergen!</div>
+      <h1 data-en="Your exchange life in Bergen, made easier." data-jp="ベルゲンでの交換留学生活を、もっとシンプルに。">Your exchange life in Bergen, made easier.</h1>
+      <p data-en="One place for everything you need — from arrival to departure." data-jp="到着初日の移動から銀行・ゴミ分別・退去手続きまで、留学生の「困った」を1か所で解決。">One place for everything you need — from arrival to departure.</p>
+
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder='Search for anything (e.g. "Vipps", "Sammen rent", "waste oil")' onkeyup="handleSearch(event)">
+        <button class="search-submit" onclick="runSearch()">🔍</button>
+      </div>
+    </div>
+  </section>
+
+  <main class="main">
+
+    <section class="journey-bar" id="timeline">
+      <div class="journey-intro">
+        <strong data-en="🧭 Not sure where to start?" data-jp="🧭 何から始めればいい？">🧭 Not sure where to start?</strong>
+        <span data-en="Follow your journey, find what you need:" data-jp="時期ごとの必須タスクをチェック：">Follow your journey, find what you need:</span>
+      </div>
+
+      <div class="journey-steps">
+        <div class="step-item" onclick="openTopic('before')">
+          <div class="step-circle">✈️</div>
+          <strong data-en="Before You Arrive" data-jp="渡航前">Before You Arrive</strong>
+          <span data-en="Get ready for Bergen" data-jp="アプリ・決済準備">Get ready for Bergen</span>
+        </div>
+        <div class="step-arrow">→</div>
+
+        <div class="step-item" onclick="openTopic('week1')">
+          <div class="step-circle">📅</div>
+          <strong data-en="Your First Week" data-jp="到着1週目">Your First Week</strong>
+          <span data-en="Settle in smoothly" data-jp="鍵受け取り・学生証">Settle in smoothly</span>
+        </div>
+        <div class="step-arrow">→</div>
+
+        <div class="step-item" onclick="openTopic('month1')">
+          <div class="step-circle">🏠</div>
+          <strong data-en="After 1 Month" data-jp="1ヶ月後">After 1 Month</strong>
+          <span data-en="Build your routine" data-jp="警察登録・生活習慣">Build your routine</span>
+        </div>
+        <div class="step-arrow">→</div>
+
+        <div class="step-item" onclick="openTopic('studies')">
+          <div class="step-circle">🎓</div>
+          <strong data-en="During Your Studies" data-jp="在学中・試験">During Your Studies</strong>
+          <span data-en="Make the most of it" data-jp="試験・退去掃除">Make the most of it</span>
+        </div>
+      </div>
+
+      <button class="outline-btn" onclick="openTopic('checklist')" data-en="Interactive Checklist →" data-jp="チェックリストを開く →">Interactive Checklist →</button>
+    </section>
+
+    <section class="qa-layout" id="guides">
+      <div>
+        <h2 class="section-title" data-en="▦ Find answers to your questions" data-jp="▦ カテゴリーから探す">▦ Find answers to your questions</h2>
+        <div class="category-grid">
+          <div class="cat-card" onclick="openTopic('housing')">
+            <div class="cat-icon">🏠</div>
+            <div class="cat-title" data-en="Housing & Accommodation" data-jp="寮・住居 (Sammen)">Housing & Accommodation</div>
+            <div class="cat-arrow">→</div>
+          </div>
+
+          <div class="cat-card green" onclick="openTopic('waste')">
+            <div class="cat-icon">♻️</div>
+            <div class="cat-title" data-en="Waste Sorting & Recycling" data-jp="ゴミ分別・リサイクル">Waste Sorting & Recycling</div>
+            <div class="cat-arrow">→</div>
+          </div>
+
+          <div class="cat-card" onclick="openTopic('transport')">
+            <div class="cat-icon">🚋</div>
+            <div class="cat-title" data-en="Transportation (Skyss)" data-jp="交通・定期券 (Skyss)">Transportation (Skyss)</div>
+            <div class="cat-arrow">→</div>
+          </div>
+
+          <div class="cat-card" onclick="openTopic('university')">
+            <div class="cat-icon">🎓</div>
+            <div class="cat-title" data-en="University Life & Exams" data-jp="大学生活・試験 (UiB)">University Life & Exams</div>
+            <div class="cat-arrow">→</div>
+          </div>
+
+          <div class="cat-card purple" onclick="openTopic('studentcard')">
+            <div class="cat-icon">🪪</div>
+            <div class="cat-title" data-en="Student Card & Discounts" data-jp="学生証・学割アプリ">Student Card & Discounts</div>
+            <div class="cat-arrow">→</div>
+          </div>
+
+          <div class="cat-card pink" onclick="openTopic('healthcare')">
+            <div class="cat-icon">🏥</div>
+            <div class="cat-title" data-en="Healthcare & Emergencies" data-jp="病院・救急・健康">Healthcare & Emergencies</div>
+            <div class="cat-arrow">→</div>
+          </div>
+
+          <div class="cat-card" onclick="openTopic('shopping')">
+            <div class="cat-icon">🛒</div>
+            <div class="cat-title" data-en="Shopping & Rain Gear" data-jp="スーパー・雨具対策">Shopping & Rain Gear</div>
+            <div class="cat-arrow">→</div>
+          </div>
+
+          <div class="cat-card" onclick="openTopic('banking')">
+            <div class="cat-icon">💳</div>
+            <div class="cat-title" data-en="No Vipps & Money Hacks" data-jp="Vippsなし決済・銀行">No Vipps & Money Hacks</div>
+            <div class="cat-arrow">→</div>
+          </div>
+
+          <div class="cat-card" onclick="openTopic('social')">
+            <div class="cat-icon">👥</div>
+            <div class="cat-title" data-en="Social Life & Events" data-jp="学生イベント・交流">Social Life & Events</div>
+            <div class="cat-arrow">→</div>
+          </div>
+
+          <div class="cat-card purple" onclick="openTopic('norwegian')">
+            <div class="cat-icon">💬</div>
+            <div class="cat-title" data-en="Norwegian Language" data-jp="ノルウェー語学習">Norwegian Language</div>
+            <div class="cat-arrow">→</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="popular-box">
+        <h3 data-en="⭐ Popular Questions" data-jp="⭐ よくある質問">⭐ Popular Questions</h3>
+        <ul class="pq-list">
+          <li class="pq-item" onclick="openTopic('banking')">
+            <span>How do I pay without Vipps?</span><span>→</span>
+          </li>
+          <li class="pq-item" onclick="openTopic('housing')">
+            <span>How do I pay my Sammen rent?</span><span>→</span>
+          </li>
+          <li class="pq-item" onclick="openTopic('waste')">
+            <span>Where can I throw away cooking oil?</span><span>→</span>
+          </li>
+          <li class="pq-item" onclick="openTopic('transport')">
+            <span>How do I get a student ticket on Skyss?</span><span>→</span>
+          </li>
+          <li class="pq-item" onclick="openTopic('housing')">
+            <span>What is Sammen Utvask inspection?</span><span>→</span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="bottom-grid" id="resources">
+      <div class="panel">
+        <h3 data-en="🔗 Essential Links" data-jp="🔗 公式リンク集">🔗 Essential Links</h3>
+        <p class="panel-sub" data-en="Official websites & key services" data-jp="主要サービスへのショートカット">Official websites & key services</p>
+
+        <a class="ext-link" href="https://sammen.no" target="_blank">
+          <span class="ext-left"><span class="ext-badge">🏠</span> Sammen – Housing & Rent</span><span>↗</span>
+        </a>
+        <a class="ext-link" href="https://bir.no" target="_blank">
+          <span class="ext-left"><span class="ext-badge">♻️</span> BIR – Waste Sorting Guide</span><span>↗</span>
+        </a>
+        <a class="ext-link" href="https://skyss.no" target="_blank">
+          <span class="ext-left"><span class="ext-badge">🚋</span> Skyss – Public Transport</span><span>↗</span>
+        </a>
+        <a class="ext-link" href="https://mitt.uib.no" target="_blank">
+          <span class="ext-left"><span class="ext-badge">🎓</span> Mitt UiB – Course Portal</span><span>↗</span>
+        </a>
+        <a class="ext-link" href="https://udi.no" target="_blank">
+          <span class="ext-left"><span class="ext-badge">🛂</span> UDI – Police Registration</span><span>↗</span>
+        </a>
+      </div>
+
+      <div class="panel">
+        <h3 data-en="👤 Your Situation" data-jp="👤 今の状況から探す">👤 Your Situation</h3>
+        <p class="panel-sub" data-en="I want to..." data-jp="現在のフェーズに合わせたガイド">I want to...</p>
+
+        <div class="situation-grid">
+          <div class="sit-card" onclick="openTopic('before')">
+            <div class="sit-img" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=500&q=80');"></div>
+            <div class="sit-body"><span>Prepare before arrival</span><span>→</span></div>
+          </div>
+
+          <div class="sit-card" onclick="openTopic('week1')">
+            <div class="sit-img" style="background-image: url('https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?auto=format&fit=crop&w=500&q=80');"></div>
+            <div class="sit-body"><span>Settle in during the first week</span><span>→</span></div>
+          </div>
+
+          <div class="sit-card" onclick="openTopic('month1')">
+            <div class="sit-img" style="background-image: url('https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?auto=format&fit=crop&w=500&q=80');"></div>
+            <div class="sit-body"><span>Get settled after one month</span><span>→</span></div>
+          </div>
+
+          <div class="sit-card" onclick="openTopic('studies')">
+            <div class="sit-img" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=500&q=80');"></div>
+            <div class="sit-body"><span>Enjoy student life in Bergen</span><span>→</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel help-panel" id="community">
+        <div>
+          <h3 data-en="💡 Need more help?" data-jp="💡 まだ解決しない時は？">💡 Need more help?</h3>
+          <p class="panel-sub" data-en="Ask fellow exchange students or share this guide!" data-jp="留学生仲間と情報をシェアしよう！">Ask fellow exchange students or share this guide!</p>
+        </div>
+
+        <div>
+          <button class="primary-btn" onclick="copyShareLink()" id="shareBtn">Share This Guide Link →</button>
+          <button class="secondary-btn" onclick="openTopic('checklist')">✅ Open Arrival Checklist</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div><strong>⛰️ Bergen Hub</strong> — Built by UiB Exchange Students</div>
+      <div class="footer-links">
+        <a href="#guides">Guides</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#resources">Official Links</a>
+        <span>Updated 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="forceCloseModal()">✕</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const topics = {
+      checklist: {
+        title: "✅ First 14 Days Arrival Checklist",
+        html: `
+          <p style="color:#5c7080; font-size:0.9rem;">Progress is saved automatically in your browser.</p>
+          <div style="margin-top:0.8rem;">
+            <label class="check-row"><input type="checkbox" data-id="c1" onchange="saveChecks()"><span><strong>Before Landing:</strong> Install <em>Skyss Billett</em> & <em>Skyss Reise</em> and link a Visa/Mastercard.</span></label>
+            <label class="check-row"><input type="checkbox" data-id="c2" onchange="saveChecks()"><span><strong>Airport (BGO):</strong> Take Bybanen Line 1 from the airport terminal straight to the city center.</span></label>
+            <label class="check-row"><input type="checkbox" data-id="c3" onchange="saveChecks()"><span><strong>Sammen Keys:</strong> Pick up your dorm key (check late-arrival keybox instructions in your Sammen email).</span></label>
+            <label class="check-row"><input type="checkbox" data-id="c4" onchange="saveChecks()"><span><strong>UiB IT & Studentbevis:</strong> Activate your UiB account, connect to <em>eduroam</em>, and verify your digital student ID.</span></label>
+            <label class="check-row"><input type="checkbox" data-id="c5" onchange="saveChecks()"><span><strong>Police / UDI Registration:</strong> Attend your residence registration appointment in Bergen (for stays > 90 days).</span></label>
+            <label class="check-row"><input type="checkbox" data-id="c6" onchange="saveChecks()"><span><strong>Supermarket Discounts:</strong> Download <em>Æ</em> (REMA 1000) and <em>Trumf</em> (Kiwi/Meny).</span></label>
+          </div>
+        `
+      },
+      banking: {
+        title: "💳 No Vipps & Money Hacks",
+        html: `
+          <ul>
+            <li><strong>Why you can't get Vipps immediately:</strong> Vipps requires a Norwegian BankID and national/D-number, which takes months (and 1-semester students usually aren't eligible).</li>
+            <li><strong>Use Revolut or Wise:</strong> Almost all international students in Bergen split bills via Revolut, Wise, or PayPal. Set yours up before arriving.</li>
+            <li><strong>Student Events (ESN / Kvarteret):</strong> If a ticket form only shows Vipps, DM the organizers on Instagram—they will give you a card payment link or Revolut option.</li>
+            <li><strong>100% Cashless:</strong> You do not need physical NOK cash. Tap-to-pay cards and Apple/Google Pay work everywhere, even at small bakeries.</li>
+          </ul>
+        `
+      },
+      housing: {
+        title: "🏠 Housing & Sammen Rent / Utvask",
+        html: `
+          <ul>
+            <li><strong>Paying Sammen Rent:</strong> Log in to <em>bolig.sammen.no</em>. International students without a Norwegian bank can pay their monthly invoice directly by Visa/Mastercard inside the portal.</li>
+            <li><strong>Laundry (Miele App):</strong> Most Sammen dorms (Fantoft, Alrek, Hatleberg) use the <em>AppWash by Miele</em> app to book and pay for washing machines.</li>
+            <li><strong>Move-Out Inspection (Utvask):</strong> Before leaving Bergen, you must deep-clean your room, fridge, bathroom, and shared kitchen. Sammen charges heavy fees if dust is left on top of wardrobes or inside air vents.</li>
+          </ul>
+        `
+      },
+      waste: {
+        title: "♻️ Waste Sorting & Recycling (BIR)",
+        html: `
+          <ul>
+            <li><strong>Paper & Cardboard:</strong> Blue/paper bins or underground BIR inlets (use your Sammen key tag/brikke if locked).</li>
+            <li><strong>Plastic Packaging:</strong> Clean plastic goes into special transparent BIR plastic bags (free at grocery store checkouts).</li>
+            <li><strong>Glass & Metal:</strong> Drop off at neighborhood igloo containers (often next to REMA 1000 or Kiwi).</li>
+            <li><strong>Cooking Oil & Batteries:</strong> Never pour cooking oil down the sink! Collect cooled oil in a sealed plastic bottle/carton and throw it in residual waste (<em>restavfall</em>), or drop large amounts at a BIR recycling station.</li>
+          </ul>
+        `
+      },
+      transport: {
+        title: "🚋 Transportation & Skyss Student Pass",
+        html: `
+          <ul>
+            <li><strong>Bybanen (Light Rail):</strong> Line 1 runs from Bergen Airport (BGO) through Fantoft and the city center (Byparken). Line 2 serves Haukeland / Alrek / Kronstad.</li>
+            <li><strong>Student Discount (40% off):</strong> Once your semester fee is registered and your <em>Studentbevis</em> app shows a green valid status, select the <strong>Student</strong> ticket in <em>Skyss Billett</em>.</li>
+            <li><strong>Ticket Inspections:</strong> Controllers check tickets frequently in plain clothes. Always buy your ticket <em>before</em> boarding!</li>
+          </ul>
+        `
+      },
+      university: {
+        title: "🎓 University Life & Exams (UiB)",
+        html: `
+          <ul>
+            <li><strong>Mitt UiB:</strong> Your main hub for lecture slides, schedules, and messages from professors.</li>
+            <li><strong>Digital Exams (Inspera):</strong> Most exams are taken on your own laptop using <em>Safe Exam Browser</em>. Run the demo test on <em>vurdering.uib.no</em> at least 1 week early.</li>
+            <li><strong>Reading Rooms (Lesesal):</strong> Don't leave bags unattended for hours to reserve seats—libraries enforce strict break time limits.</li>
+          </ul>
+        `
+      },
+      studentcard: {
+        title: "🪪 Student Card & Discounts",
+        html: `
+          <ul>
+            <li><strong>Digital ID:</strong> Download the <em>Studentbevis</em> app (log in via Feide). This is valid for Skyss, trains (Vy), museums, and student bars.</li>
+            <li><strong>Physical Keycard:</strong> Pick up your physical UiB card at the Student Centre (Parkveien 1) for 24/7 building access and printing.</li>
+          </ul>
+        `
+      },
+      healthcare: {
+        title: "🏥 Healthcare & Emergencies",
+        html: `
+          <ul>
+            <li><strong>Emergency Numbers:</strong> Medical Emergency: <strong>113</strong> | Police: <strong>112</strong> | Fire: <strong>110</strong>.</li>
+            <li><strong>Urgent Care (Bergen Legevakt):</strong> Located at Solheimsgaten 9 (near Danmarksplass). Call <strong>116 117</strong> first before walking in for non-life-threatening urgent issues.</li>
+            <li><strong>Sammen Health:</strong> Sammen offers subsidized mental health counseling and general health advice for students.</li>
+          </ul>
+        `
+      },
+      shopping: {
+        title: "🛒 Groceries, Cheap Eats & Rain Gear",
+        html: `
+          <ul>
+            <li><strong>Cheapest Supermarkets:</strong> <em>REMA 1000</em> and <em>Kiwi</em>. Look for budget brands <em>First Price</em> and <em>Prima</em>.</li>
+            <li><strong>Too Good To Go:</strong> Reserve mystery bags around 20:00–22:00 for 39–49 NOK from bakeries and Meny.</li>
+            <li><strong>Bergen Rain Rule:</strong> Skip umbrellas—sideways wind breaks them fast. Get a waterproof shell jacket (10,000mm+ water column) and waterproof shoes.</li>
+          </ul>
+        `
+      },
+      social: {
+        title: "👥 Social Life & Events",
+        html: `
+          <ul>
+            <li><strong>Det Akademiske Kvarter:</strong> The student-run culture house in the city center with concerts, quiz nights, and cheap student drinks.</li>
+            <li><strong>ESN Bergen:</strong> Organizes welcome week parties, cabin trips, and hikes for exchange students.</li>
+            <li><strong>Hiking (Byfjellene):</strong> Hike Mount Fløyen or Ulriken with friends—free, iconic views, and right above campus.</li>
+          </ul>
+        `
+      },
+      norwegian: {
+        title: "💬 Norwegian Language Tips",
+        html: `
+          <ul>
+            <li><strong>Everyone speaks English:</strong> You can easily survive in English, though locals love when you say <em>"Tusen takk"</em> (Thank you very much) and <em>"Ha det bra"</em> (Goodbye).</li>
+            <li><strong>UiB Courses:</strong> Check <em>NOR-INTRO</em> or Tandem language exchange events at the library to practice with Norwegian students.</li>
+          </ul>
+        `
+      },
+      before: {
+        title: "✈️ Before You Arrive",
+        html: `<ul><li>Set up <strong>Revolut / Wise</strong> for fee-free NOK payments.</li><li>Download <strong>Skyss Billett</strong> and <strong>Skyss Reise</strong>.</li><li>Pack waterproof layers and a good rain shell jacket.</li></ul>`
+      },
+      week1: {
+        title: "📅 Your First Week in Bergen",
+        html: `<ul><li>Collect your <strong>Sammen key</strong> and check your room inventory list within 48 hours.</li><li>Activate your <strong>UiB IT account</strong> and <strong>Studentbevis</strong> app to unlock 40% off Skyss transit.</li><li>Join ESN / faculty orientation events.</li></ul>`
+      },
+      month1: {
+        title: "🏠 After 1 Month",
+        html: `<ul><li>Complete your <strong>UDI / Police registration</strong> appointment.</li><li>Get familiar with <strong>BIR waste sorting</strong> rules in your dorm.</li><li>Explore secondhand gear on <strong>Finn.no</strong> or Facebook exchange groups.</li></ul>`
+      },
+      studies: {
+        title: "🎓 During Your Studies & Move-Out",
+        html: `<ul><li>Test <strong>Safe Exam Browser</strong> on <em>vurdering.uib.no</em> before finals.</li><li>Book your <strong>Sammen Utvask</strong> cleaning check early before your flight home.</li></ul>`
+      }
+    };
+
+    function openTopic(key) {
+      const data = topics[key];
+      if (!data) return;
+      document.getElementById('modalContent').innerHTML = `<h2>${data.title}</h2>${data.html}`;
+      document.getElementById('modalBackdrop').classList.add('open');
+      if (key === 'checklist') loadChecks();
+    }
+
+    function closeModal(e) {
+      if (e.target.id === 'modalBackdrop') forceCloseModal();
+    }
+    function forceCloseModal() {
+      document.getElementById('modalBackdrop').classList.remove('open');
+    }
+
+    function saveChecks() {
+      document.querySelectorAll('#modalContent input[type="checkbox"]').forEach(cb => {
+        localStorage.setItem(cb.dataset.id, cb.checked ? 'true' : 'false');
+      });
+    }
+    function loadChecks() {
+      document.querySelectorAll('#modalContent input[type="checkbox"]').forEach(cb => {
+        if (localStorage.getItem(cb.dataset.id) === 'true') cb.checked = true;
+      });
+    }
+
+    function runSearch() {
+      const q = document.getElementById('searchInput').value.toLowerCase().trim();
+      if (!q) return;
+      if (q.includes('vipps') || q.includes('bank') || q.includes('money') || q.includes('revolut')) return openTopic('banking');
+      if (q.includes('rent') || q.includes('sammen') || q.includes('utvask') || q.includes('key')) return openTopic('housing');
+      if (q.includes('oil') || q.includes('waste') || q.includes('trash') || q.includes('bir')) return openTopic('waste');
+      if (q.includes('skyss') || q.includes('bus') || q.includes('bybanen') || q.includes('ticket')) return openTopic('transport');
+      if (q.includes('exam') || q.includes('uib') || q.includes('inspera')) return openTopic('university');
+      if (q.includes('rain') || q.includes('shop') || q.includes('rema') || q.includes('kiwi')) return openTopic('shopping');
+      openTopic('checklist');
+    }
+    function handleSearch(e) {
+      if (e.key === 'Enter') runSearch();
+    }
+
+    function setLang(lang, btn) {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+    }
+
+    function copyShareLink() {
+      navigator.clipboard.writeText(window.location.href);
+      const btn = document.getElementById('shareBtn');
+      btn.textContent = '✓ Link Copied!';
+      setTimeout(() => { btn.textContent = 'Share This Guide Link →'; }, 2000);
+    }
+  </script>
+</body>
+</html>
