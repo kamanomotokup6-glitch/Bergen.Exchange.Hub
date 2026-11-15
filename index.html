@@ -528,10 +528,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.56rem 0;
+      padding: 0.54rem 0;
       text-decoration: none;
       color: var(--ink);
-      font-size: 0.84rem;
+      font-size: 0.83rem;
       font-weight: 600;
       border-bottom: 1px solid var(--bg);
       transition: color 0.15s;
@@ -842,6 +842,38 @@
     }
     .check-row input { margin-top: 0.25rem; accent-color: var(--navy); width: 16px; height: 16px; }
 
+    /* Floating Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 90;
+      background: var(--navy);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      padding: 0.62rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.38rem;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(17, 34, 51, 0.22);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease, background 0.15s ease;
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      background: var(--navy-hover);
+    }
+
     /* Footer */
     footer {
       background: var(--surface);
@@ -859,8 +891,8 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-    .footer-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-    .footer-links a { color: var(--ink-soft); text-decoration: none; cursor: pointer; }
+    .footer-links { display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center; }
+    .footer-links a { color: var(--ink-soft); text-decoration: none; cursor: pointer; font-weight: 600; }
     .footer-links a:hover { color: var(--accent); }
 
     @media (max-width: 960px) {
@@ -874,6 +906,7 @@
       .category-grid { grid-template-columns: 1fr; }
       .situation-grid { grid-template-columns: 1fr; }
       .article-shell { padding: 1.35rem; }
+      .back-to-top { bottom: 1rem; right: 1rem; padding: 0.55rem 0.9rem; }
     }
   </style>
 </head>
@@ -915,11 +948,11 @@
       <div class="hero-inner">
         <div class="hero-eyebrow" data-en="Bergen, Norway • Student Field Guide" data-jp="ノルウェー・ベルゲン 交換留学生ハンドブック">Bergen, Norway • Student Field Guide</div>
         <h1 data-en="Your exchange life in Bergen, made clear." data-jp="ベルゲンでの留学生活を、迷わずシンプルに。">Your exchange life in Bergen, made clear.</h1>
-        <p data-en="Practical answers written by UiB exchange students — covering Sammen dorms, VPN & course grade stats, Skyss transit, banking without Vipps, and BIR recycling." data-jp="Sammenの寮手続き、UiB VPNや成績統計（楽単検索）、Skyss学割定期券、Vippsなしの決済、BIRゴミ分別まで、UiB留学生の実体験に基づく実用ガイド。">Practical answers written by UiB exchange students — covering Sammen dorms, VPN & course grade stats, Skyss transit, banking without Vipps, and BIR recycling.</p>
+        <p data-en="Practical answers written by UiB exchange students — covering Sammen dorms, VPN & course grade stats, eTilbudsavis deals, Skyss transit, banking without Vipps, and BIR recycling." data-jp="Sammenの寮手続き、UiB VPNや成績統計（楽単検索）、格安比較サイトeTilbudsavis、Skyss学割定期券、Vippsなしの決済、BIRゴミ分別まで、UiB留学生の実体験に基づく実用ガイド。">Practical answers written by UiB exchange students — covering Sammen dorms, VPN & course grade stats, eTilbudsavis deals, Skyss transit, banking without Vipps, and BIR recycling.</p>
 
         <div class="search-wrapper" id="searchWrapper">
           <div class="search-box">
-            <input type="text" id="searchInput" autocomplete="off" placeholder='Search topics (e.g. "Vipps", "VPN", "Sammen", "Skyss")' oninput="liveSearch()" onkeyup="handleSearch(event)">
+            <input type="text" id="searchInput" autocomplete="off" placeholder='Search topics (e.g. "Vipps", "VPN", "eTilbudsavis", "Sammen")' oninput="liveSearch()" onkeyup="handleSearch(event)">
             <button class="search-clear" id="searchClear" onclick="clearSearch()" title="Clear">✕</button>
             <button class="search-submit" onclick="runSearch()">
               <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -1012,6 +1045,17 @@
               <span class="cat-arrow">→</span>
             </div>
 
+            <div class="cat-card" onclick="openTopic('shopping')">
+              <div class="cat-left">
+                <div class="cat-icon-box"><svg class="icon icon-lg" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg></div>
+                <div>
+                  <div class="cat-title" data-en="Groceries, Deals & Rain Gear" data-jp="スーパー・特売比較・雨具">Groceries, Deals & Rain Gear</div>
+                  <div class="cat-desc-mini" data-en="eTilbudsavis, REMA 1000 & Finn.no" data-jp="eTilbudsavis比較・格安スーパー・中古">eTilbudsavis, REMA 1000 & Finn.no</div>
+                </div>
+              </div>
+              <span class="cat-arrow">→</span>
+            </div>
+
             <div class="cat-card" onclick="openTopic('waste')">
               <div class="cat-left">
                 <div class="cat-icon-box"><svg class="icon icon-lg" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></div>
@@ -1051,17 +1095,6 @@
                 <div>
                   <div class="cat-title" data-en="Student ID & Perks" data-jp="学生証・学割アプリ">Student ID & Perks</div>
                   <div class="cat-desc-mini" data-en="Studentbevis app & keycard" data-jp="デジタル学生証・建物入館カード">Studentbevis app & keycard</div>
-                </div>
-              </div>
-              <span class="cat-arrow">→</span>
-            </div>
-
-            <div class="cat-card" onclick="openTopic('shopping')">
-              <div class="cat-left">
-                <div class="cat-icon-box"><svg class="icon icon-lg" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg></div>
-                <div>
-                  <div class="cat-title" data-en="Groceries & Rain Gear" data-jp="スーパー・雨具対策">Groceries & Rain Gear</div>
-                  <div class="cat-desc-mini" data-en="REMA 1000, Finn.no & rain jackets" data-jp="格安スーパー・中古サイト・防水着">REMA 1000, Finn.no & rain jackets</div>
                 </div>
               </div>
               <span class="cat-arrow">→</span>
@@ -1114,11 +1147,11 @@
             <li class="pq-item" onclick="openTopic('university')">
               <span data-en="Where to check course grade statistics?" data-jp="履修科目の成績分布（楽単）の調べ方は？">Where to check course grade statistics?</span><span>→</span>
             </li>
+            <li class="pq-item" onclick="openTopic('shopping')">
+              <span data-en="How to compare supermarket deals?" data-jp="スーパーの特売チラシ・最安値比較は？">How to compare supermarket deals?</span><span>→</span>
+            </li>
             <li class="pq-item" onclick="openTopic('banking')">
               <span data-en="How do I pay without Vipps?" data-jp="Vippsなしでどうやって支払う？">How do I pay without Vipps?</span><span>→</span>
-            </li>
-            <li class="pq-item" onclick="openTopic('waste')">
-              <span data-en="Where do I throw away cooking oil?" data-jp="料理の廃油はどこに捨てる？">Where do I throw away cooking oil?</span><span>→</span>
             </li>
           </ul>
         </aside>
@@ -1138,6 +1171,9 @@
           </a>
           <a class="ext-link" href="https://karakterer.net/" target="_blank" rel="noopener">
             <span class="ext-left"><span class="ext-dot"></span> Karakterstatistikk (Grade Stats)</span><span>↗</span>
+          </a>
+          <a class="ext-link" href="https://etilbudsavis.no/" target="_blank" rel="noopener">
+            <span class="ext-left"><span class="ext-dot"></span> eTilbudsavis (Grocery Flyers & Deals)</span><span>↗</span>
           </a>
           <a class="ext-link" href="https://bir.no" target="_blank" rel="noopener">
             <span class="ext-left"><span class="ext-dot"></span> BIR Waste & Recycling</span><span>↗</span>
@@ -1202,6 +1238,12 @@
     <article class="article-shell" id="pageArticleContent"></article>
   </div>
 
+  <!-- FLOATING BACK TO TOP BUTTON -->
+  <button class="back-to-top" id="backToTopBtn" onclick="scrollToTop()" aria-label="Back to top">
+    <svg class="icon" viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    <span data-en="Top" data-jp="トップへ">Top</span>
+  </button>
+
   <footer>
     <div class="footer-inner">
       <div><strong>Bergen Hub</strong> — Independent Guide for UiB Exchange Students</div>
@@ -1209,7 +1251,7 @@
         <a onclick="goHome('timeline')" data-en="Timeline" data-jp="タイムライン">Timeline</a>
         <a onclick="goHome('guides')" data-en="Guides" data-jp="ガイド">Guides</a>
         <a onclick="goHome('resources')" data-en="Links" data-jp="公式リンク">Links</a>
-        <span>Bergen, Norway</span>
+        <a onclick="scrollToTop()" data-en="Back to Top ↑" data-jp="ページの先頭へ ↑">Back to Top ↑</a>
       </div>
     </div>
   </footer>
@@ -1235,7 +1277,7 @@
           en: "Step-by-step tasks from before landing at BGO to activating student transit discounts and UiB VPN. Progress saves automatically in your browser.",
           jp: "ベルゲン空港（BGO）到着前から学割定期券・UiB VPNの有効化まで、最初の2週間でやるべき手続き一覧です。チェック状態はブラウザに自動保存されます。"
         },
-        keywords: "checklist arrival tasks landing airport vpn チェックリスト 到着 やること 準備",
+        keywords: "checklist arrival tasks landing airport vpn etilbudsavis チェックリスト 到着 やること 準備",
         isChecklist: true,
         checks: [
           { id: "c1", en: "Before Landing: Install Skyss Billett, link a Visa/Mastercard, and set up a home-country VPN.", jp: "渡航前：Skyss Billettアプリにカードを登録し、日本のサイト閲覧用に日本サーバー対応VPNを契約・設定する。" },
@@ -1243,7 +1285,7 @@
           { id: "c3", en: "Sammen Keys: Collect your dorm key and submit room inventory check within 48 hours.", jp: "Sammen寮：鍵を受け取り、48時間以内に部屋の備品チェックリストを提出する。" },
           { id: "c4", en: "UiB IT, VPN & Studentbevis: Activate UiB account, set up UiB VPN (Cisco AnyConnect), and verify Studentbevis.", jp: "UiB設定：大学アカウント、学外アクセス用のUiB VPN（Cisco AnyConnect）、Studentbevis（学生証アプリ）を設定する。" },
           { id: "c5", en: "Police / UDI Registration: Attend your residence registration appointment in Bergen.", jp: "警察登録：90日以上滞在する場合、予約した日時にベルゲン警察署（UDI）で居住登録を行う。" },
-          { id: "c6", en: "Supermarket Apps: Download Æ (REMA 1000) and Trumf (Kiwi/Meny) for grocery discounts.", jp: "スーパーアプリ：REMA 1000の「Æ」とKiwi/Menyの「Trumf」を入れて食費を節約する。" }
+          { id: "c6", en: "Grocery Savings: Bookmark eTilbudsavis and download Æ (REMA 1000) & Trumf (Kiwi/Meny).", jp: "食費節約：特売チラシ比較サイトeTilbudsavisと、REMA 1000の「Æ」・Kiwi/Menyの「Trumf」を入れる。" }
         ],
         points: [
           {
@@ -1280,7 +1322,7 @@
             ]
           }
         ],
-        related: ["before", "week1", "university", "housing", "banking"]
+        related: ["before", "week1", "university", "housing", "shopping"]
       },
       housing: {
         badge: { en: "Accommodation", jp: "寮・住居" },
@@ -1369,6 +1411,59 @@
           }
         ],
         related: ["studentcard", "before", "studies", "norwegian"]
+      },
+      shopping: {
+        badge: { en: "Daily Life & Savings", jp: "買い物・特売比較" },
+        title: { en: "Groceries, Price Comparison & Rain Gear", jp: "特売比較（eTilbudsavis）・格安スーパー・雨具対策" },
+        summary: {
+          en: "Compare weekly supermarket flyers with eTilbudsavis, save with loyalty apps, and dress for Bergen's coastal rain.",
+          jp: "スーパー各社の特売チラシを一括比較できるeTilbudsavisの活用法や、物価の高いノルウェーでの食費節約・防水ウェア対策です。"
+        },
+        keywords: "shopping grocery supermarket etilbudsavis deals flyer compare rema 1000 kiwi meny cheap food too good to go finn secondhand rain jacket umbrella スーパー 買い物 食費 特売 チラシ 比較 最安値 雨具 傘 ジャケット 中古",
+        points: [
+          {
+            title: { en: "Compare Weekly Supermarket Deals (eTilbudsavis)", jp: "格安比較サイト・アプリ「eTilbudsavis」で最安値検索" },
+            desc: {
+              en: "Browse weekly flyers from REMA 1000, Kiwi, Meny, Spar, and Coop in one place—or search specific items (e.g. salmon, chicken, coffee) to see which store has the cheapest deal this week.",
+              jp: "REMA 1000・Kiwi・Meny・Coop・Sparなどノルウェー全スーパーの週間特売チラシを一括閲覧でき、商品名で検索して今週どこが一番安いか比較できる必須サイトです。"
+            },
+            links: [
+              { label: { en: "Open eTilbudsavis", jp: "eTilbudsavisを開く" }, url: "https://etilbudsavis.no/" }
+            ]
+          },
+          {
+            title: { en: "Budget Supermarkets & Loyalty Apps", jp: "格安スーパーとポイント割引アプリ" },
+            desc: {
+              en: "REMA 1000 and Kiwi offer the lowest everyday prices. Look for 'First Price' and 'Prima' budget brands, and scan the Æ and Trumf apps at checkout.",
+              jp: "普段の買い物はREMA 1000やKiwiが最安クラスです。プライベートブランド（First Price / Prima）や割引アプリ（Æ / Trumf）を組み合わせましょう。"
+            },
+            links: [
+              { label: { en: "REMA 1000", jp: "REMA 1000公式サイト" }, url: "https://www.rema.no" },
+              { label: { en: "Kiwi", jp: "Kiwi公式サイト" }, url: "https://kiwi.no" }
+            ]
+          },
+          {
+            title: { en: "Too Good To Go (40 NOK Magic Bags)", jp: "Too Good To Go（パン・食品の格安レスキュー）" },
+            desc: {
+              en: "Reserve surplus bread, pastries, and groceries from bakeries and Meny supermarkets in the evening for around 39–49 NOK.",
+              jp: "閉店前のベーカリーやスーパー（Meny等）の売れ残り食品セットを、アプリ経由で39〜49 NOK程度の破格で購入できます。"
+            },
+            links: [
+              { label: { en: "Too Good To Go", jp: "Too Good To Go公式サイト" }, url: "https://www.toogoodtogo.com" }
+            ]
+          },
+          {
+            title: { en: "Secondhand Gear & Rainwear (Finn.no)", jp: "中古品サイト（Finn.no）と雨具の選び方" },
+            desc: {
+              en: "Skip umbrellas—coastal wind breaks them quickly. Find affordable waterproof shell jackets and dorm items on Finn.no ('Gis bort' = free).",
+              jp: "ベルゲンは横殴りの風が強いため傘はすぐ壊れます。防水シェルジャケットや日用品は中古サイトFinn.no（「Gis bort」は無料譲渡）で探すのがおすすめです。"
+            },
+            links: [
+              { label: { en: "Browse Finn.no", jp: "Finn.noを開く" }, url: "https://www.finn.no" }
+            ]
+          }
+        ],
+        related: ["banking", "waste", "before"]
       },
       banking: {
         badge: { en: "Money & Payments", jp: "お金・決済事情" },
@@ -1593,49 +1688,6 @@
         ],
         related: ["week1", "housing"]
       },
-      shopping: {
-        badge: { en: "Daily Life", jp: "買い物・生活防衛" },
-        title: { en: "Groceries, Cheap Eats & Rain Gear", jp: "格安スーパー・フードロスアプリ・雨具対策" },
-        summary: {
-          en: "How to keep grocery bills low in Norway and dress properly for Bergen's coastal rain and wind.",
-          jp: "物価の高いノルウェーで食費を抑えるスーパー選びと、雨の多いベルゲンで必須の防水ウェア対策です。"
-        },
-        keywords: "shopping grocery supermarket rema 1000 kiwi meny cheap food too good to go finn secondhand rain jacket umbrella スーパー 買い物 食費 雨具 傘 ジャケット 中古",
-        points: [
-          {
-            title: { en: "Budget Supermarkets & Loyalty Apps", jp: "格安スーパーとポイント割引アプリ" },
-            desc: {
-              en: "Shop at REMA 1000 and Kiwi for the lowest prices. Look for 'First Price' and 'Prima' items, and scan the Æ and Trumf apps.",
-              jp: "食料品はREMA 1000やKiwiが最安クラスです。プライベートブランド（First Price / Prima）や割引アプリ（Æ / Trumf）を活用しましょう。"
-            },
-            links: [
-              { label: { en: "REMA 1000", jp: "REMA 1000公式サイト" }, url: "https://www.rema.no" },
-              { label: { en: "Kiwi", jp: "Kiwi公式サイト" }, url: "https://kiwi.no" }
-            ]
-          },
-          {
-            title: { en: "Too Good To Go (40 NOK Magic Bags)", jp: "Too Good To Go（パン・食品の格安レスキュー）" },
-            desc: {
-              en: "Reserve surplus bread, pastries, and groceries from bakeries and Meny supermarkets in the evening for around 39–49 NOK.",
-              jp: "閉店前のベーカリーやスーパー（Meny等）の売れ残り食品セットを、アプリ経由で39〜49 NOK程度の破格で購入できます。"
-            },
-            links: [
-              { label: { en: "Too Good To Go", jp: "Too Good To Go公式サイト" }, url: "https://www.toogoodtogo.com" }
-            ]
-          },
-          {
-            title: { en: "Secondhand Gear & Rainwear (Finn.no)", jp: "中古品サイト（Finn.no）と雨具の選び方" },
-            desc: {
-              en: "Skip umbrellas—coastal wind breaks them quickly. Find affordable waterproof shell jackets and dorm items on Finn.no ('Gis bort' = free).",
-              jp: "ベルゲンは横殴りの風が強いため傘はすぐ壊れます。防水シェルジャケットや日用品は中古サイトFinn.no（「Gis bort」は無料譲渡）で探すのがおすすめです。"
-            },
-            links: [
-              { label: { en: "Browse Finn.no", jp: "Finn.noを開く" }, url: "https://www.finn.no" }
-            ]
-          }
-        ],
-        related: ["banking", "waste", "before"]
-      },
       social: {
         badge: { en: "Community", jp: "交流・イベント" },
         title: { en: "Social Life & Mountain Hiking", jp: "学生会館・ESNイベント・ベルゲン七山ハイキング" },
@@ -1748,7 +1800,7 @@
             },
             links: [
               { label: { en: "Transport Guide", jp: "交通・Skyssガイド" }, internal: "transport" },
-              { label: { en: "Groceries & Rain Gear", jp: "買い物・雨具ガイド" }, internal: "shopping" }
+              { label: { en: "Groceries, Deals & Rain Gear", jp: "買い物・特売・雨具ガイド" }, internal: "shopping" }
             ]
           }
         ],
@@ -2011,17 +2063,17 @@
 
       if (points.length === 0 && categories.length === 0) {
         const heading = currentLang === 'jp' ? `「${escapeHtml(val)}」に一致する項目がありません` : `No exact results for "${escapeHtml(val)}"`;
-        const sub = currentLang === 'jp' ? '「VPN」「楽単」「家賃」「ゴミ」「Skyss」などの単語で試すか、以下の分野から選んでください：' : 'Try keywords like VPN, Sammen, karakter, Skyss, oil, or choose a topic below:';
+        const sub = currentLang === 'jp' ? '「VPN」「楽単」「特売」「家賃」「Skyss」などの単語で試すか、以下の分野から選んでください：' : 'Try keywords like VPN, eTilbudsavis, Sammen, karakter, Skyss, or choose a topic below:';
         document.getElementById('modalContent').innerHTML = `
           <h2>${heading}</h2>
           <p class="modal-sub">${sub}</p>
           <div class="point-links" style="margin-top:1rem;">
             <button class="jump-chip internal" onclick="openTopic('housing')">${t(topics.housing.title)}</button>
             <button class="jump-chip internal" onclick="openTopic('university')">${t(topics.university.title)}</button>
+            <button class="jump-chip internal" onclick="openTopic('shopping')">${t(topics.shopping.title)}</button>
             <button class="jump-chip internal" onclick="openTopic('banking')">${t(topics.banking.title)}</button>
             <button class="jump-chip internal" onclick="openTopic('waste')">${t(topics.waste.title)}</button>
             <button class="jump-chip internal" onclick="openTopic('transport')">${t(topics.transport.title)}</button>
-            <button class="jump-chip internal" onclick="openTopic('before')">${t(topics.before.title)}</button>
           </div>
         `;
         document.getElementById('modalBackdrop').classList.add('open');
@@ -2164,7 +2216,7 @@
 
       document.getElementById('homeView').style.display = 'none';
       document.getElementById('pageView').classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      scrollToTop();
       history.replaceState(null, '', '#guide/' + key);
       if (data.isChecklist) loadChecks();
     }
@@ -2178,9 +2230,23 @@
         const el = document.getElementById(sectionId);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        scrollToTop();
       }
     }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('backToTopBtn');
+      if (!btn) return;
+      if (window.scrollY > 260) {
+        btn.classList.add('visible');
+      } else {
+        btn.classList.remove('visible');
+      }
+    });
 
     function closeModal(e) {
       if (e.target.id === 'modalBackdrop') forceCloseModal();
@@ -2213,8 +2279,8 @@
       const searchInput = document.getElementById('searchInput');
       if (searchInput) {
         searchInput.placeholder = lang === 'jp'
-          ? 'キーワード検索（例：VPN、楽単、家賃、Skyss）'
-          : 'Search topics (e.g. "Vipps", "VPN", "Sammen", "Skyss")';
+          ? 'キーワード検索（例：VPN、楽単、特売、家賃）'
+          : 'Search topics (e.g. "Vipps", "VPN", "eTilbudsavis", "Sammen")';
       }
 
       if (activeModalKey && document.getElementById('modalBackdrop').classList.contains('open')) {
