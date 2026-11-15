@@ -169,15 +169,22 @@
       margin-bottom: 1.6rem;
       font-weight: 500;
     }
+
+    /* Search Wrapper & Live Dropdown */
+    .search-wrapper {
+      position: relative;
+      max-width: 540px;
+      z-index: 50;
+    }
     .search-box {
       display: flex;
       align-items: center;
       background: var(--surface);
       border-radius: 999px;
       padding: 0.35rem 0.4rem 0.35rem 1.2rem;
-      max-width: 520px;
+      width: 100%;
       box-shadow: 0 8px 24px rgba(20, 43, 59, 0.12);
-      border: 1px solid rgba(20, 43, 59, 0.1);
+      border: 1px solid rgba(20, 43, 59, 0.14);
     }
     .search-box input {
       border: none;
@@ -187,6 +194,16 @@
       color: var(--text);
       background: transparent;
     }
+    .search-clear {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.95rem;
+      cursor: pointer;
+      padding: 0 0.55rem;
+      display: none;
+    }
+    .search-clear.visible { display: block; }
     .search-submit {
       width: 38px;
       height: 38px;
@@ -199,6 +216,47 @@
       align-items: center;
       justify-content: center;
       font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .search-submit:hover { background: var(--navy-light); }
+
+    .search-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 32px rgba(20, 43, 59, 0.18);
+      overflow: hidden;
+      max-height: 340px;
+      overflow-y: auto;
+    }
+    .search-dropdown.open { display: block; }
+    .sd-item {
+      padding: 0.75rem 1.1rem;
+      border-bottom: 1px solid var(--bg);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .sd-item:last-child { border-bottom: none; }
+    .sd-item:hover { background: var(--card-blue); }
+    .sd-title { font-size: 0.88rem; font-weight: 700; color: var(--navy); }
+    .sd-sub { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+    .sd-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: var(--bg);
+      color: var(--navy);
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      border: 1px solid var(--border);
     }
 
     /* Main Container */
@@ -511,6 +569,13 @@
       transition: border-color 0.15s;
     }
     .point-item:hover { border-color: #cbd5e1; }
+    .point-cat-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--fjord);
+      margin-bottom: 0.25rem;
+    }
     .point-title {
       font-weight: 700;
       color: var(--navy);
@@ -745,9 +810,13 @@
         <h1 data-en="Your exchange life in Bergen, made easier." data-jp="ベルゲンでの交換留学生活を、もっとシンプルに。">Your exchange life in Bergen, made easier.</h1>
         <p data-en="One place for everything you need — from arrival to departure." data-jp="到着初日の移動から銀行・ゴミ分別・退去手続きまで、留学生の「困った」を1か所で解決。">One place for everything you need — from arrival to departure.</p>
 
-        <div class="search-box">
-          <input type="text" id="searchInput" placeholder='Search for anything (e.g. "Vipps", "Sammen rent", "waste oil")' onkeyup="handleSearch(event)">
-          <button class="search-submit" onclick="runSearch()">🔍</button>
+        <div class="search-wrapper" id="searchWrapper">
+          <div class="search-box">
+            <input type="text" id="searchInput" autocomplete="off" placeholder='Search EN or 日本語 (e.g. "Vipps", "ゴミ", "家賃", "Skyss")' oninput="liveSearch()" onkeyup="handleSearch(event)">
+            <button class="search-clear" id="searchClear" onclick="clearSearch()" title="Clear">✕</button>
+            <button class="search-submit" onclick="runSearch()">🔍</button>
+          </div>
+          <div class="search-dropdown" id="searchDropdown"></div>
         </div>
       </div>
     </section>
@@ -980,6 +1049,7 @@
         badge: "Interactive Tracker",
         title: "✅ First 14 Days Arrival Checklist",
         summary: "Step-by-step tasks from before landing at BGO to getting your student discounts active. Progress saves automatically.",
+        keywords: "checklist arrival tasks to do first days landing airport チェックリスト 到着 やること 準備",
         isChecklist: true,
         points: [
           {
@@ -1027,6 +1097,7 @@
         badge: "Money & Payments",
         title: "💳 No Vipps & Money Hacks",
         summary: "How to pay rent, split bills with friends, and buy event tickets without a Norwegian bank account.",
+        keywords: "vipps bank bankid money revolut wise paypal cashless pay split bill nok currency 銀行 お金 決済 送金 クレジットカード 現金 割り勘",
         points: [
           {
             title: "Why you can't get Vipps immediately",
@@ -1065,6 +1136,7 @@
         badge: "Accommodation",
         title: "🏠 Housing & Sammen Rent / Utvask",
         summary: "Everything about paying your monthly dorm invoice, booking laundry, and passing the move-out cleaning check.",
+        keywords: "housing dorm rent sammen fantoft alrek hatleberg key laundry miele utvask cleaning inspection move out 寮 住居 家賃 支払い 鍵 洗濯 退去 掃除",
         points: [
           {
             title: "Paying Sammen Rent with International Card",
@@ -1095,6 +1167,7 @@
         badge: "Sustainability & Rules",
         title: "♻️ Waste Sorting & Recycling (BIR)",
         summary: "Bergen uses strict waste sorting and underground vacuum inlets. Here is where every type of trash goes.",
+        keywords: "waste trash garbage sorting recycling bir cooking oil plastic bag glass metal pant bottle deposit ゴミ ごみ 分別 リサイクル 油 廃油 ペットボトル 缶 プラスチック",
         points: [
           {
             title: "Paper, Cardboard & Residual Waste (Restavfall)",
@@ -1131,6 +1204,7 @@
         badge: "Getting Around",
         title: "🚋 Transportation & Skyss Student Pass",
         summary: "How to ride Bybanen (light rail) and buses across Bergen with the 40% student discount.",
+        keywords: "transport skyss bybanen tram bus airport ticket pass student discount fine controller 交通 電車 バス トラム 定期券 チケット 空港 学割",
         points: [
           {
             title: "Bybanen Lines 1 & 2",
@@ -1161,6 +1235,7 @@
         badge: "Academics & Exams",
         title: "🎓 University Life & Exams (UiB)",
         summary: "Essential portals, digital exam software, and library etiquette at the University of Bergen.",
+        keywords: "university uib mitt inspera exam safe exam browser studentweb library grades courses 大学 試験 テスト 履修 成績 図書館",
         points: [
           {
             title: "Mitt UiB (Course Portal)",
@@ -1191,6 +1266,7 @@
         badge: "ID & Perks",
         title: "🪪 Student Card & Discounts",
         summary: "Your digital ID unlocks transit discounts, museum entry, and student culture houses.",
+        keywords: "student card id studentbevis feide keycard discount museum train vy 学生証 学割 カード 割引",
         points: [
           {
             title: "Studentbevis App (Digital ID)",
@@ -1214,6 +1290,7 @@
         badge: "Safety & Health",
         title: "🏥 Healthcare & Emergencies",
         summary: "Emergency numbers, urgent care clinic locations, and Sammen student health services.",
+        keywords: "health healthcare hospital doctor legevakt emergency 113 112 110 sick mental counseling 病院 救急 医者 体調不良 緊急",
         points: [
           {
             title: "Norwegian Emergency Numbers",
@@ -1243,6 +1320,7 @@
         badge: "Daily Life",
         title: "🛒 Shopping, Cheap Eats & Rain Gear",
         summary: "How to save money on groceries in Norway and dress properly for Bergen's famous rain.",
+        keywords: "shopping grocery supermarket rema 1000 kiwi meny cheap food too good to go finn secondhand rain jacket umbrella スーパー 買い物 食費 雨具 傘 ジャケット 中古",
         points: [
           {
             title: "Budget Supermarkets & Loyalty Apps",
@@ -1273,6 +1351,7 @@
         badge: "Community",
         title: "👥 Social Life & Events",
         summary: "Where to meet Norwegian and international students, join cabin trips, and hike the 7 mountains.",
+        keywords: "social events party esn kvarteret hike floyen ulriken mountains friends club 友達 イベント パーティー ハイキング 山 交流",
         points: [
           {
             title: "Det Akademiske Kvarter",
@@ -1302,6 +1381,7 @@
         badge: "Language & Culture",
         title: "💬 Norwegian Language",
         summary: "Useful everyday phrases and free ways to practice Norwegian while studying at UiB.",
+        keywords: "norwegian language course sprakkafe tandem speak english ノルウェー語 語学 言語 英語 会話",
         points: [
           {
             title: "Everyone Speaks Fluent English",
@@ -1324,6 +1404,7 @@
         badge: "Timeline • Phase 1",
         title: "✈️ Before You Arrive",
         summary: "Prepare your apps, payment cards, and waterproof clothing before flying to Bergen.",
+        keywords: "before arrive packing flight prepare apps 渡航前 持ち物 準備 パッキング",
         points: [
           {
             title: "Set Up Revolut or Wise",
@@ -1354,6 +1435,7 @@
         badge: "Timeline • Phase 2",
         title: "📅 Your First Week in Bergen",
         summary: "Get your dorm keys, activate your student ID, and join orientation events.",
+        keywords: "first week orientation key eduroam welcome week 1週目 到着直後 オリエンテーション",
         points: [
           {
             title: "Collect Your Sammen Key",
@@ -1384,6 +1466,7 @@
         badge: "Timeline • Phase 3",
         title: "🏠 After 1 Month",
         summary: "Complete legal registration, master local recycling rules, and settle into your routine.",
+        keywords: "month 1 police udi registration visa residence permit 警察登録 ビザ 在留許可 1ヶ月",
         points: [
           {
             title: "Attend UDI / Police Registration",
@@ -1413,6 +1496,7 @@
         badge: "Timeline • Phase 4",
         title: "🎓 During Your Studies & Move-Out",
         summary: "Prepare for digital exams at UiB and plan a smooth Utvask move-out inspection.",
+        keywords: "studies finals departure move out utvask departure 帰国 退去 期末試験",
         points: [
           {
             title: "Test Safe Exam Browser Early",
@@ -1434,6 +1518,191 @@
         related: ["month1", "university", "housing"]
       }
     };
+
+    /* Smart Full-Text & Bilingual Search Engine */
+    function searchDatabase(rawQuery) {
+      const q = rawQuery.toLowerCase().trim();
+      if (!q) return { points: [], categories: [] };
+      const terms = q.split(/\s+/).filter(Boolean);
+
+      const matchedPoints = [];
+      const matchedCategories = [];
+
+      Object.entries(topics).forEach(([key, topic]) => {
+        const catCorpus = `${topic.title} ${topic.summary} ${topic.keywords || ''}`.toLowerCase();
+        let catScore = 0;
+        terms.forEach(t => {
+          if (topic.title.toLowerCase().includes(t)) catScore += 10;
+          if ((topic.keywords || '').toLowerCase().includes(t)) catScore += 8;
+          if (topic.summary.toLowerCase().includes(t)) catScore += 4;
+        });
+
+        if (catScore > 0) {
+          matchedCategories.push({ key, topic, score: catScore });
+        }
+
+        (topic.points || []).forEach(pt => {
+          const ptCorpus = `${pt.title} ${pt.desc} ${topic.title} ${topic.keywords || ''}`.toLowerCase();
+          let ptScore = 0;
+          terms.forEach(t => {
+            if (pt.title.toLowerCase().includes(t)) ptScore += 12;
+            if (pt.desc.toLowerCase().includes(t)) ptScore += 6;
+            if ((topic.keywords || '').toLowerCase().includes(t)) ptScore += 3;
+          });
+
+          const allTermsMatch = terms.every(t => ptCorpus.includes(t));
+          if (ptScore > 0 && (terms.length === 1 || allTermsMatch || ptScore >= 10)) {
+            matchedPoints.push({
+              key,
+              categoryTitle: topic.title,
+              point: pt,
+              score: ptScore + (allTermsMatch ? 5 : 0)
+            });
+          }
+        });
+      });
+
+      matchedCategories.sort((a, b) => b.score - a.score);
+      matchedPoints.sort((a, b) => b.score - a.score);
+
+      return { points: matchedPoints, categories: matchedCategories };
+    }
+
+    function liveSearch() {
+      const input = document.getElementById('searchInput');
+      const dropdown = document.getElementById('searchDropdown');
+      const clearBtn = document.getElementById('searchClear');
+      const val = input.value;
+
+      if (val.trim().length > 0) {
+        clearBtn.classList.add('visible');
+      } else {
+        clearBtn.classList.remove('visible');
+        dropdown.classList.remove('open');
+        return;
+      }
+
+      const { points, categories } = searchDatabase(val);
+      if (points.length === 0 && categories.length === 0) {
+        dropdown.innerHTML = `<div class="sd-item" onclick="runSearch()"><div><div class="sd-title">No instant match for "${escapeHtml(val)}"</div><div class="sd-sub">Press Enter to browse all guides</div></div></div>`;
+        dropdown.classList.add('open');
+        return;
+      }
+
+      let html = '';
+      points.slice(0, 4).forEach(m => {
+        html += `
+          <div class="sd-item" onclick="selectSearchMatch('${m.key}')">
+            <div>
+              <div class="sd-title">${m.point.title}</div>
+              <div class="sd-sub">${m.point.desc.slice(0, 75)}...</div>
+            </div>
+            <span class="sd-badge">${m.categoryTitle}</span>
+          </div>
+        `;
+      });
+
+      categories.slice(0, 2).forEach(c => {
+        html += `
+          <div class="sd-item" onclick="selectSearchMatch('${c.key}')">
+            <div>
+              <div class="sd-title">${c.topic.title}</div>
+              <div class="sd-sub">${c.topic.summary.slice(0, 70)}...</div>
+            </div>
+            <span class="sd-badge">Category →</span>
+          </div>
+        `;
+      });
+
+      dropdown.innerHTML = html;
+      dropdown.classList.add('open');
+    }
+
+    function selectSearchMatch(key) {
+      document.getElementById('searchDropdown').classList.remove('open');
+      openTopic(key);
+    }
+
+    function clearSearch() {
+      const input = document.getElementById('searchInput');
+      input.value = '';
+      document.getElementById('searchClear').classList.remove('visible');
+      document.getElementById('searchDropdown').classList.remove('open');
+      input.focus();
+    }
+
+    function runSearch() {
+      const val = document.getElementById('searchInput').value.trim();
+      document.getElementById('searchDropdown').classList.remove('open');
+      if (!val) return;
+
+      const { points, categories } = searchDatabase(val);
+
+      if (points.length === 0 && categories.length === 0) {
+        document.getElementById('modalContent').innerHTML = `
+          <h2>🔍 No exact results for "${escapeHtml(val)}"</h2>
+          <p class="modal-sub">Try searching words like <strong>Vipps</strong>, <strong>Sammen</strong>, <strong>oil / ゴミ</strong>, <strong>Skyss</strong>, <strong>exam</strong>, or pick a category below:</p>
+          <div class="point-links" style="margin-top:1rem;">
+            <button class="jump-chip internal" onclick="openTopic('banking')">💳 No Vipps & Money</button>
+            <button class="jump-chip internal" onclick="openTopic('housing')">🏠 Housing & Rent</button>
+            <button class="jump-chip internal" onclick="openTopic('waste')">♻️ Waste Sorting</button>
+            <button class="jump-chip internal" onclick="openTopic('transport')">🚋 Skyss Transport</button>
+            <button class="jump-chip internal" onclick="openTopic('university')">🎓 UiB & Exams</button>
+            <button class="jump-chip internal" onclick="openTopic('shopping')">🛒 Shopping & Rain</button>
+          </div>
+        `;
+        document.getElementById('modalBackdrop').classList.add('open');
+        return;
+      }
+
+      const catChips = categories.map(c =>
+        `<button class="jump-chip internal" onclick="openTopic('${c.key}')">${c.topic.title} →</button>`
+      ).join('');
+
+      const pointsHtml = points.slice(0, 6).map(m => {
+        const linksHtml = (m.point.links || []).map(l => {
+          if (l.internal) {
+            return `<button class="jump-chip internal" onclick="openFullPage('${l.internal}')">📄 ${l.label} →</button>`;
+          }
+          return `<a class="jump-chip" href="${l.url}" target="_blank" rel="noopener">${l.label} ↗</a>`;
+        }).join('');
+        return `
+          <div class="point-item">
+            <div class="point-cat-tag">${m.categoryTitle}</div>
+            <div class="point-title">${m.point.title}</div>
+            <div class="point-desc">${m.point.desc}</div>
+            <div class="point-links">
+              <button class="jump-chip internal" onclick="openTopic('${m.key}')">Open Full Category</button>
+              ${linksHtml}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('modalContent').innerHTML = `
+        <h2>🔍 Search Results for "${escapeHtml(val)}"</h2>
+        <p class="modal-sub">Found ${points.length} matching item(s) across ${categories.length} category/categories.</p>
+        ${catChips ? `<div class="point-links" style="margin-bottom:0.85rem;">${catChips}</div>` : ''}
+        <div class="point-list">${pointsHtml}</div>
+      `;
+      document.getElementById('modalBackdrop').classList.add('open');
+    }
+
+    function handleSearch(e) {
+      if (e.key === 'Enter') runSearch();
+      if (e.key === 'Escape') document.getElementById('searchDropdown').classList.remove('open');
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+    }
+
+    document.addEventListener('click', (e) => {
+      const wrapper = document.getElementById('searchWrapper');
+      if (wrapper && !wrapper.contains(e.target)) {
+        document.getElementById('searchDropdown').classList.remove('open');
+      }
+    });
 
     function renderPointsHTML(list) {
       return `<div class="point-list">` + list.map(item => {
@@ -1549,21 +1818,6 @@
       document.querySelectorAll('input[type="checkbox"][data-id]').forEach(cb => {
         if (localStorage.getItem(cb.dataset.id) === 'true') cb.checked = true;
       });
-    }
-
-    function runSearch() {
-      const q = document.getElementById('searchInput').value.toLowerCase().trim();
-      if (!q) return;
-      if (q.includes('vipps') || q.includes('bank') || q.includes('money') || q.includes('revolut')) return openTopic('banking');
-      if (q.includes('rent') || q.includes('sammen') || q.includes('utvask') || q.includes('key')) return openTopic('housing');
-      if (q.includes('oil') || q.includes('waste') || q.includes('trash') || q.includes('bir')) return openTopic('waste');
-      if (q.includes('skyss') || q.includes('bus') || q.includes('bybanen') || q.includes('ticket')) return openTopic('transport');
-      if (q.includes('exam') || q.includes('uib') || q.includes('inspera')) return openTopic('university');
-      if (q.includes('rain') || q.includes('shop') || q.includes('rema') || q.includes('kiwi')) return openTopic('shopping');
-      openTopic('checklist');
-    }
-    function handleSearch(e) {
-      if (e.key === 'Enter') runSearch();
     }
 
     function setLang(lang, btn) {
